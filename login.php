@@ -16,18 +16,18 @@
                <div class="flip-card__inner">
                   <div class="flip-card__front">
                      <div class="title">Log in</div>
-                     <form class="flip-card__form" action="">
+                     <form class="flip-card__form" action="loginCheck.php" method="POST">
                         <input class="flip-card__input" name="email" placeholder="Email" type="email">
-                        <input class="flip-card__input" name="password" placeholder="Password" type="password">
-                        <button class="flip-card__btn">Let`s go!</button>
+                        <input class="flip-card__input" name="psswrd" placeholder="Password" type="password">
+                        <button class="flip-card__btn" >Let`s go!</button>
                      </form>
                   </div>
                   <div class="flip-card__back">
                      <div class="title">Sign up</div>
-                     <form class="flip-card__form" action="">
-                        <input class="flip-card__input" placeholder="Name" type="name">
-                        <input class="flip-card__input" name="email" placeholder="Email" type="email">
-                        <input class="flip-card__input" name="password" placeholder="Password" type="password">
+                     <form class="flip-card__form" action="signUp.php" method="POST">
+                        <input class="flip-card__input" placeholder="Name" type="name" name="name">
+                        <input class="flip-card__input"  placeholder="Email" type="email" name="email">
+                        <input class="flip-card__input"  placeholder="Password"  name="psswrd">
                         <button class="flip-card__btn">Confirm!</button>
                      </form>
                   </div>
