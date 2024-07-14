@@ -7,8 +7,9 @@
 </head>
 <link rel="stylesheet" href="login.css">
 <body>
+<div class="ill"><img src="login.jpg" class="img"></div>
 <div class="wrapper">
-        <div class="card-switch">
+ <div class="card-switch">
             <label class="switch">
                <input type="checkbox" class="toggle">
                <span class="slider"></span>
