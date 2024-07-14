@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="login.css">
 <body>
 <div class="ill"><img src="login.jpg" class="img"></div>
+<div class="seperator"></div>
 <div class="wrapper">
  <div class="card-switch">
             <label class="switch">
