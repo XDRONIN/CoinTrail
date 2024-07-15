@@ -6,8 +6,20 @@
     <title>login or sighnuo</title>
 </head>
 <link rel="stylesheet" href="login.css">
+<link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
 <body>
-<div class="ill"><img src="login.jpg" class="img"></div>
+<p class="logo">Coin<span class="span1">Trail</span></p>
+   
+<div class="bigWrap">
+
+<div class="ill"><img src="login2.jpg" class="img"></div>
 <div class="seperator"></div>
 <div class="wrapper">
  <div class="card-switch">
@@ -37,5 +49,6 @@
             </label>
         </div>   
    </div>
+</div>
 </body>
 </html>
