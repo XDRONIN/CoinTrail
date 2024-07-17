@@ -8,7 +8,9 @@ include"connect.php";
         $row=mysqli_fetch_assoc($result);
         if($psswrd==$row["psswrd"]){
 
-            echo "logged in"; 
+            
+            header("Location:http://localhost/MiniProject/dashboard.php");
+            exit();
         }
         else{
 
