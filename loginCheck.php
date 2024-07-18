@@ -1,4 +1,5 @@
 <?php
+session_start();
 include"connect.php"; 
     $email=$_POST["email"];
     $psswrd=$_POST["psswrd"];
@@ -8,7 +9,7 @@ include"connect.php";
         $row=mysqli_fetch_assoc($result);
         if($psswrd==$row["psswrd"]){
 
-            
+            $_SESSION["email"]=$email;//stores email in session superglobal array for dashboard to access
             header("Location:http://localhost/MiniProject/dashboard.php");
             exit();
         }
