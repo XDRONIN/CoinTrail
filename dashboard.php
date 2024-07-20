@@ -21,7 +21,7 @@ if (isset($_SESSION["email"])){//getting the email from session
 <link rel="stylesheet" href="dashboard.css">
 <body>
     <div class="navbar"></div>
-    <div class="balance"></div>
+    <div class="balance">$$</div>
     <div class="container">
       <div class="overview"></div>
       <div class="piechart"></div>
