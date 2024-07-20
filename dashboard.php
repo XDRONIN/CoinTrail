@@ -8,7 +8,7 @@ if (isset($_SESSION["email"])){//getting the email from session
     $idrow = mysqli_fetch_array($idresult);
    // echo"".$idrow["0"];
     $tbname="user_".$idrow[0];
-    //echo $tbname;
+   //echo $tbname;
 }
 ?>
 <!DOCTYPE html>
@@ -18,21 +18,14 @@ if (isset($_SESSION["email"])){//getting the email from session
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<link rel="stylesheet" href="dashboard.css">
 <body>
-    DASHBOARD<br>
-    <?php 
-    $sql="SELECT * FROM $tbname";
-    
-    $result = mysqli_query($conn,$sql);
-    
-    if($row = mysqli_fetch_array($result)){
-    while ($row) {
-        echo "".$row["0"]."".$row["1"].$row["2"].$row["3"].$row["4"].$row["5"];
-        $row = mysqli_fetch_array($result) ;
-    } }
-    else{
-        echo "error";
-    }
-    ?>
+    <div class="navbar"></div>
+    <div class="balance"></div>
+    <div class="container">
+      <div class="overview"></div>
+      <div class="piechart"></div>
+    </div>   
+ 
 </body>
 </html>
