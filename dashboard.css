@@ -17,17 +17,17 @@ body {
   display: flex;
   min-height: 70px;
   min-width: 100%;
-  background-color: blue;
+  color: #24977b;
   margin-top: 20px;
   justify-content: center;
   align-items: center;
+  font-size: 50px;
 }
 .container {
   display: flex;
   padding: 10px;
   min-width: 100vh;
   min-height: 100vh;
-  background-color: blueviolet;
 }
 .overview {
   display: flex;
