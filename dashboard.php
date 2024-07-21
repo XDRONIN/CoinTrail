@@ -73,4 +73,8 @@ if (isset($_SESSION["email"])){//getting the email from session
     </div>   
  
 </body>
+<script>
+  let tbname="<?php echo $tbname?>";
+  console.log(tbname);
+</script>
 </html>
