@@ -33,8 +33,8 @@ if($qry){
         id INT(11) NOT NULL AUTO_INCREMENT,
         COD VARCHAR(20) NOT NULL , 
         amount INT(11) NOT NULL , 
-        catogory TEXT NOT NULL ,
-        scatogory TEXT NOT NULL, 
+        catogory VARCHAR(100) NOT NULL ,
+        scatogory VARCHAR(100) NOT NULL, 
         DOT DATE NOT NULL , PRIMARY KEY (id))";//DOT==Date Of Transation COD==Credit Or Debit
      $insertion=mysqli_query($conn, $insertSql);
      /*if($insertion){
