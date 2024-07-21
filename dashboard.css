@@ -1,6 +1,7 @@
 body {
   padding: 0;
   margin: 0;
+  overflow: hidden;
   font-family: "outfit";
   background-color: #ffffff;
 }
@@ -189,4 +190,12 @@ body {
 }
 .icons {
   height: 90px;
+}
+.transactions {
+  position: absolute;
+  top: 54%;
+  width: 100vh;
+  height: 450px;
+
+  background-color: aqua;
 }

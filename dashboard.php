@@ -64,6 +64,9 @@ if (isset($_SESSION["email"])){//getting the email from session
          <img src="money (copy).png" class="icons">
           <div class="tooltiptext">Others</div>
       </div>
+      <div class="transactions">
+        <p></p>
+      </div>
       </div>
       
       <div class="piechart"></div>
