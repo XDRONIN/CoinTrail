@@ -44,25 +44,25 @@ if (isset($_SESSION["email"])){//getting the email from session
     <div class="balance">$$</div>
     <div class="container">
       <div class="overview">
-      <div class="tooltip">
+      <div class="tooltip" style="background-color: #FA5555;">
 
          <img src="shopping-cart (copy).png" class="icons">
-          <div class="tooltiptext">Hi there !</div>
+          <div class="tooltiptext">Essentials</div>
       </div>
-      <div class="tooltip">
+      <div class="tooltip" style="background-color: #F7FB76;">
 
       <img src="bill (copy).png" class="icons">
-<div class="tooltiptext">Hi there !</div>
+<div class="tooltiptext">Bills</div>
 </div>   
-<div class="tooltip">
+<div class="tooltip" style="background-color: #8DED8E;">
 
           <img src="piggy-bank (copy).png" class="icons">
-          <div class="tooltiptext">Hi there !</div>
+          <div class="tooltiptext">Savings</div>
       </div>
-      <div class="tooltip">
+      <div class="tooltip" style="background-color: #2D7D8F;">
 
          <img src="money (copy).png" class="icons">
-          <div class="tooltiptext">Hi there !</div>
+          <div class="tooltiptext">Others</div>
       </div>
       </div>
       

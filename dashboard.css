@@ -35,13 +35,13 @@ body {
   display: flex;
 
   flex-basis: 200px;
+  height: fit-content;
   flex: 1;
 }
 .piechart {
   display: flex;
   flex-basis: 200px;
   flex: 1;
-  background-color: rgb(153, 165, 42);
 }
 .logo {
   display: flex;
@@ -145,7 +145,7 @@ body {
   height: 200px;
   width: 200px;
   cursor: pointer;
-  background-color: #282828;
+
   color: #f1f1f1;
   margin-left: 20px;
   margin-top: 50px;
