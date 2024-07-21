@@ -46,22 +46,22 @@ if (isset($_SESSION["email"])){//getting the email from session
       <div class="overview">
       <div class="tooltip">
 
-         
+         <img src="shopping-cart (copy).png" class="icons">
           <div class="tooltiptext">Hi there !</div>
       </div>
       <div class="tooltip">
 
-         
+      <img src="bill (copy).png" class="icons">
 <div class="tooltiptext">Hi there !</div>
 </div>   
 <div class="tooltip">
 
-         
+          <img src="piggy-bank (copy).png" class="icons">
           <div class="tooltiptext">Hi there !</div>
       </div>
       <div class="tooltip">
 
-         
+         <img src="money (copy).png" class="icons">
           <div class="tooltiptext">Hi there !</div>
       </div>
       </div>
