@@ -43,7 +43,29 @@ if (isset($_SESSION["email"])){//getting the email from session
     </div>
     <div class="balance">$$</div>
     <div class="container">
-      <div class="overview"></div>
+      <div class="overview">
+      <div class="tooltip">
+
+         
+          <div class="tooltiptext">Hi there !</div>
+      </div>
+      <div class="tooltip">
+
+         
+<div class="tooltiptext">Hi there !</div>
+</div>   
+<div class="tooltip">
+
+         
+          <div class="tooltiptext">Hi there !</div>
+      </div>
+      <div class="tooltip">
+
+         
+          <div class="tooltiptext">Hi there !</div>
+      </div>
+      </div>
+      
       <div class="piechart"></div>
     </div>   
  
