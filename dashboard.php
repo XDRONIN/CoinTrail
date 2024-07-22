@@ -21,6 +21,18 @@ if (isset($_SESSION["email"])){//getting the email from session
    $essResult = mysqli_query($conn,$essSql);
    $essRow = mysqli_fetch_array($essResult);
    $essAmount= $essRow["0"];
+   $billSql="SELECT SUM(amount) FROM $tbname WHERE catogory='Bills';";//Bills amount
+   $billResult = mysqli_query($conn,$billSql);
+   $billRow = mysqli_fetch_array($billResult);
+   $billAmount= $billRow["0"];
+   $savSql="SELECT SUM(amount) FROM $tbname WHERE catogory='Savings';";//Savings amount
+   $savResult = mysqli_query($conn,$savSql);
+   $savRow = mysqli_fetch_array($savResult);
+   $savAmount= $savRow["0"];
+   $othSql="SELECT SUM(amount) FROM $tbname WHERE catogory='Others';";//Others amount
+   $othResult = mysqli_query($conn,$othSql);
+   $othRow = mysqli_fetch_array($othResult);
+   $othAmount= $othRow["0"];
 }
 ?>
 <!DOCTYPE html>
@@ -44,11 +56,13 @@ if (isset($_SESSION["email"])){//getting the email from session
   let credAmount="<?php echo$credAmount?>";//credit
   let debAmount="<?php echo$debAmount?>";//debit
   let essAmount="<?php echo$essAmount?>";//Essentials
-  console.log(credAmount);
-  console.log(debAmount);
-  console.log(essAmount);
+  let billAmount="<?php echo$billAmount?>";//Bills
+  let savAmount="<?php echo$savAmount?>";//Savings
+  let othAmount="<?php echo$othAmount?>";//Others
+
+  
   let balance=credAmount - debAmount;
-  console.log(balance);
+  
 </script>
 <body>
     <div class="navbar">
@@ -77,19 +91,19 @@ if (isset($_SESSION["email"])){//getting the email from session
 
       <img src="bill (copy).png" class="icons">
 <div class="tooltiptext">Bills</div>
-    <div class="value">$$</div>
+    <div class="value"><script>document.write(billAmount,"$")</script></div>
 </div>   
 <div class="tooltip" style="background-color: #8DED8E;">
 
           <img src="piggy-bank (copy).png" class="icons">
           <div class="tooltiptext">Savings</div>
-          <div class="value">$$</div>
+          <div class="value"><script>document.write(savAmount,"$")</script></div>
       </div>
       <div class="tooltip" style="background-color: #2D7D8F;">
 
          <img src="money (copy).png" class="icons">
           <div class="tooltiptext">Others</div>
-          <div class="value">$$</div>
+          <div class="value"><script>document.write(othAmount,"$")</script></div>
       </div>
       <div class="transactions">
         <p></p>

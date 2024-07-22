@@ -172,6 +172,7 @@ body {
   transform: translateX(-50%);
   opacity: 0;
   transition: opacity 0.3s;
+  font-size: 20px;
 }
 .value {
   display: none;
