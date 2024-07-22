@@ -71,21 +71,25 @@ if (isset($_SESSION["email"])){//getting the email from session
 
          <img src="shopping-cart (copy).png" class="icons">
           <div class="tooltiptext">Essentials</div>
+          <div class="value"><script>document.write(essAmount,"$")</script></div>
       </div>
       <div class="tooltip" style="background-color: #F7FB76;">
 
       <img src="bill (copy).png" class="icons">
 <div class="tooltiptext">Bills</div>
+    <div class="value">$$</div>
 </div>   
 <div class="tooltip" style="background-color: #8DED8E;">
 
           <img src="piggy-bank (copy).png" class="icons">
           <div class="tooltiptext">Savings</div>
+          <div class="value">$$</div>
       </div>
       <div class="tooltip" style="background-color: #2D7D8F;">
 
          <img src="money (copy).png" class="icons">
           <div class="tooltiptext">Others</div>
+          <div class="value">$$</div>
       </div>
       <div class="transactions">
         <p></p>
