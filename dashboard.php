@@ -9,6 +9,14 @@ if (isset($_SESSION["email"])){//getting the email from session
    // echo"".$idrow["0"];
     $tbname="user_".$idrow[0];
    //echo $tbname;
+   $credSql="SELECT SUM(amount) FROM $tbname WHERE COD='credit';";
+   $credResult = mysqli_query($conn,$credSql);
+   $credRow = mysqli_fetch_array($credResult);
+   $credAmount= $credRow["0"];
+   $debSql="SELECT SUM(amount) FROM $tbname WHERE COD='debit';";
+   $debResult = mysqli_query($conn,$debSql);
+   $debRow = mysqli_fetch_array($debResult);
+   $debAmount= $debRow["0"];
 }
 ?>
 <!DOCTYPE html>
@@ -27,6 +35,15 @@ if (isset($_SESSION["email"])){//getting the email from session
     />
 </head>
 <link rel="stylesheet" href="dashboard.css">
+<script>
+  let tbname="<?php echo $tbname?>";
+  let credAmount="<?php echo$credAmount?>";
+  let debAmount="<?php echo$debAmount?>";
+  console.log(credAmount);
+  console.log(debAmount);
+  let balance=credAmount - debAmount;
+  console.log(balance);
+</script>
 <body>
     <div class="navbar">
       <div class="menu">
@@ -41,7 +58,7 @@ if (isset($_SESSION["email"])){//getting the email from session
       <h2 class="logo">Coin<span class="span1">Trail</span></h2>
       <div class="profile">NAME</div>
     </div>
-    <div class="balance">$$</div>
+    <div class="balance"><script>document.write(balance,"$")</script></div>
     <div class="container">
       <div class="overview">
       <div class="tooltip" style="background-color: #FA5555;">
@@ -73,8 +90,5 @@ if (isset($_SESSION["email"])){//getting the email from session
     </div>   
  
 </body>
-<script>
-  let tbname="<?php echo $tbname?>";
-  console.log(tbname);
-</script>
+
 </html>
