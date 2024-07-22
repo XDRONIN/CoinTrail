@@ -9,14 +9,18 @@ if (isset($_SESSION["email"])){//getting the email from session
    // echo"".$idrow["0"];
     $tbname="user_".$idrow[0];
    //echo $tbname;
-   $credSql="SELECT SUM(amount) FROM $tbname WHERE COD='credit';";
+   $credSql="SELECT SUM(amount) FROM $tbname WHERE COD='credit';";//credit amount
    $credResult = mysqli_query($conn,$credSql);
    $credRow = mysqli_fetch_array($credResult);
    $credAmount= $credRow["0"];
-   $debSql="SELECT SUM(amount) FROM $tbname WHERE COD='debit';";
+   $debSql="SELECT SUM(amount) FROM $tbname WHERE COD='debit';";//debit amount
    $debResult = mysqli_query($conn,$debSql);
    $debRow = mysqli_fetch_array($debResult);
    $debAmount= $debRow["0"];
+   $essSql="SELECT SUM(amount) FROM $tbname WHERE catogory='Essentials';";//Essentials amount
+   $essResult = mysqli_query($conn,$essSql);
+   $essRow = mysqli_fetch_array($essResult);
+   $essAmount= $essRow["0"];
 }
 ?>
 <!DOCTYPE html>
@@ -37,10 +41,12 @@ if (isset($_SESSION["email"])){//getting the email from session
 <link rel="stylesheet" href="dashboard.css">
 <script>
   let tbname="<?php echo $tbname?>";
-  let credAmount="<?php echo$credAmount?>";
-  let debAmount="<?php echo$debAmount?>";
+  let credAmount="<?php echo$credAmount?>";//credit
+  let debAmount="<?php echo$debAmount?>";//debit
+  let essAmount="<?php echo$essAmount?>";//Essentials
   console.log(credAmount);
   console.log(debAmount);
+  console.log(essAmount);
   let balance=credAmount - debAmount;
   console.log(balance);
 </script>
@@ -58,7 +64,7 @@ if (isset($_SESSION["email"])){//getting the email from session
       <h2 class="logo">Coin<span class="span1">Trail</span></h2>
       <div class="profile">NAME</div>
     </div>
-    <div class="balance"><script>document.write(balance,"$")</script></div>
+    <div class="balance"><b><script>document.write(balance,"$")</script></b></div>
     <div class="container">
       <div class="overview">
       <div class="tooltip" style="background-color: #FA5555;">
