@@ -126,7 +126,10 @@ if (isset($_SESSION["email"])){//getting the email from session
       <h2 class="logo">Coin<span class="span1">Trail</span></h2>
       <div class="profile">NAME</div>
     </div>
-    <div class="balance"><b><script>document.write(balance,"$")</script></b></div>
+    <div class="balance">
+      <img src="wallet.png" height="56px" width="56px">  &nbsp;
+      <b><script>document.write(balance,"$")</script></b>
+    </div>
     <div class="container">
       <div class="overview">
       <div class="tooltip" style="background-color: #FA5555;">
