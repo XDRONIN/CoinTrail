@@ -41,9 +41,12 @@ body {
 }
 .piechart {
   display: flex;
+  justify-content: center;
+
   flex-basis: 200px;
   flex: 1;
 }
+
 .logo {
   display: flex;
 
@@ -218,6 +221,4 @@ body {
   top: 54%;
   width: 100vh;
   height: 450px;
-
-  background-color: aqua;
 }

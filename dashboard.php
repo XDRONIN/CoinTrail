@@ -64,6 +64,54 @@ if (isset($_SESSION["email"])){//getting the email from session
   let balance=credAmount - debAmount;
   
 </script>
+<!---The Pie Chart Script-->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+
+      // Load the Visualization API and the corechart package.
+      google.charts.load('current', {'packages':['corechart']});
+
+      // Set a callback to run when the Google Visualization API is loaded.
+      google.charts.setOnLoadCallback(drawChart);
+
+      // Callback that creates and populates a data table,
+      // instantiates the pie chart, passes in the data and
+      // draws it.
+      function drawChart() {
+
+        // Create the data table.
+        var data = new google.visualization.DataTable();
+        
+        data.addColumn('string', 'Catogory');
+        data.addColumn('number', 'Amount');
+        
+        data.addRows([
+          ['Essentials', Number (essAmount)],
+          ['Bills', Number( billAmount)],
+          ['Savings', Number( savAmount)],
+          ['Others', Number( othAmount)],
+          
+        ]);
+
+        // Set chart options
+        var options = {'title':'Spending Overview',
+                       slices: {0: {color: '#FA5555'}, 1:{color: '#F7FB76'}, 2:{color: '#8DED8E'}, 3: {color: '#2D7D8F'}},
+                       'width':1300,
+                        is3D: true,
+                        pieSliceTextStyle:{color: 'black', fontName: 'outfit', fontSize: '20'},
+                        titleTextStyle:{ color: 'black',
+                                          fontName: 'outfit',
+                                          fontSize: 30,
+                                          bold: true,
+                                          },
+    
+                       'height':940};
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+        chart.draw(data, options);
+      }
+    </script>
 <body>
     <div class="navbar">
       <div class="menu">
@@ -110,7 +158,9 @@ if (isset($_SESSION["email"])){//getting the email from session
       </div>
       </div>
       
-      <div class="piechart"></div>
+      <div class="piechart">
+      <div id="chart_div"></div>
+      </div>
     </div>   
  
 </body>
