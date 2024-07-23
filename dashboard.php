@@ -167,9 +167,23 @@ if (isset($_SESSION["email"])){//getting the email from session
          for ($i = 1; $i <= 5; $i++) {
           $tranRow = mysqli_fetch_array($tranResult);
           if($tranRow[0]=="debit" ){
-          echo "<div class='tranRow' style='background-color: #FA5555;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div><br>";}
+            
+          if($tranRow[3]=="Essentials"){
+            echo "<div class='tranRow' style='background-color: #FA5555;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div><br>";
+          }
+          else if($tranRow[3]== "Bills"){
+            echo "<div class='tranRow' style='background-color: #F7FB76;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div><br>";
+          }
+          else if($tranRow[3]== "Savings"){
+            echo "<div class='tranRow' style='background-color: #8DED8E;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div><br>";
+          }
+          else if($tranRow[3]== "Others"){
+            echo "<div class='tranRow' style='background-color: #2D7D8F;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div><br>";
+          }
+
+        }
           else{
-            echo "<div class='tranRow' style='background-color: #8DED8E;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]."</div><br>";}
+            echo "<div class='tranRow' style='background-color: #24977b;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]."</div><br>";}
            }
         
         
