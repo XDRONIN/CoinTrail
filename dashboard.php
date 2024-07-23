@@ -104,7 +104,7 @@ if (isset($_SESSION["email"])){//getting the email from session
                        'width':1300,
                         is3D: true,
                         pieSliceTextStyle:{color: 'black', fontName: 'outfit', fontSize: '20'},
-                        titleTextStyle:{ color: 'black',
+                        titleTextStyle:{ color: '#24977b',
                                           fontName: 'outfit',
                                           fontSize: 30,
                                           bold: true,
