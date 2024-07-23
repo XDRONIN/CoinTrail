@@ -47,6 +47,17 @@ body {
   flex: 1;
 }
 
+.tranRow {
+  display: block;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 500;
+}
+.tranHead {
+  font-weight: 900;
+  font-size: 35px;
+  color: #24977b;
+}
 .logo {
   display: flex;
 

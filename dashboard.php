@@ -33,6 +33,10 @@ if (isset($_SESSION["email"])){//getting the email from session
    $othResult = mysqli_query($conn,$othSql);
    $othRow = mysqli_fetch_array($othResult);
    $othAmount= $othRow["0"];
+   $tranSql="SELECT COD,amount,DOT,catogory,scatogory FROM $tbname ORDER BY id DESC";
+   $tranResult = mysqli_query($conn,$tranSql);
+  
+   
 }
 ?>
 <!DOCTYPE html>
@@ -59,7 +63,8 @@ if (isset($_SESSION["email"])){//getting the email from session
   let billAmount="<?php echo$billAmount?>";//Bills
   let savAmount="<?php echo$savAmount?>";//Savings
   let othAmount="<?php echo$othAmount?>";//Others
-
+  let transAmount="<?php echo $tranAmount[0]?>"
+  console.log(transAmount);
   
   let balance=credAmount - debAmount;
   
@@ -148,7 +153,7 @@ if (isset($_SESSION["email"])){//getting the email from session
 
           <img src="piggy-bank (copy).png" class="icons">
           <div class="tooltiptext">Savings</div>
-          <div class="value"><script>document.write(savAmount,"$")</script></div>
+          <div class="value" ><script>document.write(savAmount,"$")</script></div>
       </div>
       <div class="tooltip" style="background-color: #2D7D8F;">
 
@@ -157,7 +162,18 @@ if (isset($_SESSION["email"])){//getting the email from session
           <div class="value"><script>document.write(othAmount,"$")</script></div>
       </div>
       <div class="transactions">
-        <p></p>
+        <center><h2 class="tranHead">Last Entries:</h2><br></center>
+        <?php 
+         for ($i = 1; $i <= 5; $i++) {
+          $tranRow = mysqli_fetch_array($tranResult);
+          if($tranRow[0]=="debit" ){
+          echo "<div class='tranRow' style='background-color: #FA5555;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div><br>";}
+          else{
+            echo "<div class='tranRow' style='background-color: #8DED8E;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]."</div><br>";}
+           }
+        
+        
+        ?>
       </div>
       </div>
       
