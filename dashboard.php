@@ -8,6 +8,7 @@ if (isset($_SESSION["email"])){//getting the email from session
     $idrow = mysqli_fetch_array($idresult);
    // echo"".$idrow["0"];
     $tbname="user_".$idrow[0];
+    $_SESSION["tbname"]=$tbname;
    //echo $tbname;
    $credSql="SELECT SUM(amount) FROM $tbname WHERE COD='credit';";//credit amount
    $credResult = mysqli_query($conn,$credSql);
