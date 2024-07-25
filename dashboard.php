@@ -117,19 +117,29 @@ if (isset($_SESSION["email"])){//getting the email from session
         chart.draw(data, options);
       }
     </script>
+    
 <body>
+  
     <div class="navbar">
+    
       <div class="menu">
+      
       <label class="burger" for="burger">
        <input type="checkbox" id="burger">
          <span></span>
          <span></span>
          <span></span>
           </label>
-      
+          
       </div>
+      
       <h2 class="logo">Coin<span class="span1">Trail</span></h2>
       <div class="profile">NAME</div>
+    </div>
+    <div class="sidebar">
+      <div class="page">Add Transactions</div>
+      <div class="page">Custom View</div>
+      <div class="page">AI Assistant</div>
     </div>
     <div class="balance">
       <img src="wallet.png" height="56px" width="56px">  &nbsp;
@@ -197,5 +207,13 @@ if (isset($_SESSION["email"])){//getting the email from session
     </div>   
  
 </body>
-
+<script>
+      let sidebar=document.querySelector(".sidebar");
+      let menu=document.getElementById("burger");
+      menu.addEventListener('click',()=>{
+        
+        sidebar.classList.toggle("active");
+      
+      })
+    </script>
 </html>

@@ -84,13 +84,43 @@ body {
   margin-left: 20px;
   margin-top: 17px;
 }
+.sidebar {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+
+  background-color: #24977b;
+  height: 100vh;
+  width: 400px;
+  top: 70px;
+  left: -100%;
+}
+.sidebar.active {
+  left: 0%;
+}
+.page {
+  display: flex;
+  justify-content: center;
+  width: 90%;
+  margin-bottom: 5px;
+  padding: 15px;
+  font-size: 25px;
+  font-weight: 500;
+}
+.page:hover {
+  background-color: #27a787;
+  cursor: pointer;
+  border-radius: 20px;
+}
 .burger {
   position: relative;
   width: 30px;
   height: 20px;
   background: transparent;
   cursor: pointer;
-  display: block;
 }
 
 .burger input {
