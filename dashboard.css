@@ -97,6 +97,7 @@ body {
   width: 400px;
   top: 70px;
   left: -100%;
+  transition: 450ms ease-in-out;
 }
 .sidebar.active {
   left: 0%;
@@ -109,6 +110,10 @@ body {
   padding: 15px;
   font-size: 25px;
   font-weight: 500;
+}
+a {
+  text-decoration: none;
+  color: inherit;
 }
 .page:hover {
   background-color: #27a787;
