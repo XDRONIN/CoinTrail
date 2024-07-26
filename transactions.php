@@ -1,11 +1,5 @@
-<?php
-session_start();
-include("connect.php");
-if (isset($_SESSION["tbname"])){//getting the user table name
-    $tbname=$_SESSION["tbname"];
-    //echo $tbname;
-}
-?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,6 +28,7 @@ if (isset($_SESSION["tbname"])){//getting the user table name
         </div>
         <div class="details">
             <div class="box">
+                <form method="POST" action="transaction2.php">
                 <div class="cod">
                     <div class="option">
                     <input type="radio" name="cod" id="cr" value="credit" class="input" checked="checked">
@@ -56,15 +51,15 @@ if (isset($_SESSION["tbname"])){//getting the user table name
                     <input type="number" name="amount" class="detail-input" placeholder="$$">
                     </div>
                     <div style="display: flex; flex-direction:column;">
-                    <label for="date" class="label">Date of Transaction:</label><br>
-                    <input type="date" name="date" class="detail-input" ><br>
+                    <label for="DOT" class="label">Date of Transaction:</label><br>
+                    <input type="date" name="DOT" class="detail-input" ><br>
                     </div>
                 </div>
                 <div class="hidden">
                 <label for="catogory" class="label">Catogory: </label><br>
                 <div class="debit-details">
                 <div class="option">
-                    <input checked="" value="Essentials" name="catogory" type="radio" class="input" />
+                    <input  value="Essentials" name="catogory" type="radio" class="input" />
                         <div class="btn es">
                     <span class="span">Essentials</span>
                          </div>
@@ -96,6 +91,7 @@ if (isset($_SESSION["tbname"])){//getting the user table name
                <center> <input type="submit" name="submit" value="Enter Details" class=" detail-input submit"><center>
 
         </div>
+</form>
     </div>
 </body>
 <script>
