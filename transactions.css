@@ -15,7 +15,7 @@ body {
   align-items: center;
 }
 img {
-  width: 75%;
+  width: 80%;
   height: 85%;
   margin-left: 30px;
 }
@@ -26,10 +26,45 @@ img {
   align-items: flex-start;
   justify-content: center;
 }
+.base-details {
+  display: flex;
+  margin-top: 20px;
+  flex-direction: column;
+}
+.label {
+  font-size: larger;
+  font-weight: 550;
+  color: #323232;
+  margin-top: 20px;
+}
+.detail-input {
+  max-width: 100%;
+  padding: 0.875rem;
+  font-size: 1rem;
+  border: 1.5px solid #000;
+  border-radius: 0.5rem;
+  box-shadow: 2.5px 3px 0 #000;
+  outline: none;
+  transition: ease 0.25s;
+}
+.detail-input:focus {
+  box-shadow: 5.5px 7px 0 black;
+}
+.submit {
+  margin: 20px;
+  padding: 20px;
+  cursor: pointer;
+  color: #323232;
+  transition: 400ms;
+}
+.submit:hover {
+  background-color: #82fab8;
+  box-shadow: 5.5px 7px 0 black;
+}
 .box {
   margin-top: 5px;
   width: 70%;
-  height: 85%;
+  height: fit-content;
   background: #2cb996;
   padding: 1rem;
   border-radius: 1rem;

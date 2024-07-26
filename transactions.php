@@ -49,8 +49,18 @@ if (isset($_SESSION["tbname"])){//getting the user table name
                 </div>
                     
                 </div>
-                <div class="base-details"></div>
+                <div class="base-details">
+                    <div style="display: flex; flex-direction:column;">
+                    <label for="amount" class="label">Amount:</label><br>
+                    <input type="number" name="amount" class="detail-input" placeholder="$$">
+                    </div>
+                    <div style="display: flex; flex-direction:column;">
+                    <label for="date" class="label">Date of Transaction:</label><br>
+                    <input type="date" name="date" class="detail-input" >
+                    </div>
+                </div>
                 <div class="debit-details"></div>
+               <center> <input type="submit" name="submit" value="Enter Details" class=" detail-input submit"><center>
             </div>
         </div>
     </div>
