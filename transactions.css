@@ -47,6 +47,17 @@ img {
   align-self: center;
   padding: 2px;
 }
+a {
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  margin-top: 18px;
+  transition: 200ms ease-in-out;
+}
+a:hover {
+  color: white;
+  cursor: pointer;
+}
 .hidden {
   display: none;
   flex-direction: column;
