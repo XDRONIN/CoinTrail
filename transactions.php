@@ -56,12 +56,38 @@ if (isset($_SESSION["tbname"])){//getting the user table name
                     </div>
                     <div style="display: flex; flex-direction:column;">
                     <label for="date" class="label">Date of Transaction:</label><br>
-                    <input type="date" name="date" class="detail-input" >
+                    <input type="date" name="date" class="detail-input" ><br>
                     </div>
                 </div>
-                <div class="debit-details"></div>
+                <label for="catogory" class="label">Catogory: </label><br>
+                <div class="debit-details">
+                <div class="option">
+                    <input checked="" value="Essentials" name="catogory" type="radio" class="input" />
+                        <div class="btn es">
+                    <span class="span">Essentials</span>
+                         </div>
+                </div>
+                <div class="option">
+                    <input  value="Bills" name="catogory" type="radio" class="input" />
+                        <div class="btn bi">
+                    <span class="span">Bills</span>
+                         </div>
+                </div>
+                <div class="option">
+                    <input  value="Savings" name="catogory" type="radio" class="input" />
+                        <div class="btn sa">
+                    <span class="span">Savings</span>
+                         </div>
+                </div>
+                <div class="option">
+                    <input  value="Others" name="catogory" type="radio" class="input" />
+                        <div class="btn ot">
+                    <span class="span">Others</span>
+                         </div>
+                </div>
+            </div>    
                <center> <input type="submit" name="submit" value="Enter Details" class=" detail-input submit"><center>
-            </div>
+
         </div>
     </div>
 </body>
