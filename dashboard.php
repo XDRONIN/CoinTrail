@@ -143,7 +143,7 @@ if (isset($_SESSION["email"])){//getting the email from session
       <div class="page"><a href="AI.php">AI Assistant</a></div>
     </div>
     <div class="balance">
-      <img src="wallet.png" height="56px" width="56px">  &nbsp;
+      <img src="wallet.png" height="46px" width="46px">  &nbsp;
       <b><script>document.write(balance,"$")</script></b>
     </div>
     <div class="container">

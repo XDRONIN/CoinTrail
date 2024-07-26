@@ -31,7 +31,38 @@ if (isset($_SESSION["tbname"])){//getting the user table name
         <div class="img">
             <img src="transactions.jpg">
         </div>
-        <div class="details"></div>
+        <div class="details">
+            <div class="box">
+                <div class="cod">
+                    <div class="option">
+                    <input type="radio" name="cod" id="cr" value="credit" class="input" checked="checked">
+                    <div class="btn gr">
+                     <span class="span">Credit</span>
+                         </div>
+                
+                </div>
+                    <div class="option">
+                    <input type="radio" name="cod" id="de" value="debit" class="input">
+                    <div class="btn rd">
+                    <span class="span">Debit</span>
+                        </div>
+                </div>
+                    
+                </div>
+                <div class="base-details"></div>
+                <div class="debit-details"></div>
+            </div>
+        </div>
     </div>
 </body>
+<script>
+    let cr = document.getElementById("cr");
+    cr.addEventListener('click',()=>{
+        if (cr.checked){
+            console.log(cr.value);
+        }
+    })
+        
+    
+</script>
 </html>
