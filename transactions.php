@@ -87,6 +87,10 @@ if (isset($_SESSION["tbname"])){//getting the user table name
                          </div>
                 </div>
             </div>    
+                    <div style="display: flex; flex-direction:column;">
+                    <label for="scatogory" class="label">Specify:</label><br>
+                    <input type="text" name="scatogory" class="detail-input" placeholder="Groceries,Petrol...">
+                    </div>
         </div>
                <center> <input type="submit" name="submit" value="Enter Details" class=" detail-input submit"><center>
 
@@ -94,10 +98,19 @@ if (isset($_SESSION["tbname"])){//getting the user table name
     </div>
 </body>
 <script>
+    let hidden= document.querySelector('.hidden');
+    let de = document.getElementById("de");
     let cr = document.getElementById("cr");
     cr.addEventListener('click',()=>{
         if (cr.checked){
             console.log(cr.value);
+            hidden.style.display='none';
+        }
+    })
+    de.addEventListener('click',()=>{
+        if (de.checked){
+            console.log(de.value);
+            hidden.style.display='flex';
         }
     })
         

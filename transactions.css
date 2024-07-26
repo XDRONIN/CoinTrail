@@ -48,7 +48,7 @@ img {
   padding: 2px;
 }
 .hidden {
-  display: flex;
+  display: none;
   flex-direction: column;
 }
 .base-details {
@@ -88,9 +88,9 @@ img {
 }
 .box {
   margin-top: 5px;
-
+  align-self: center;
   width: 70%;
-  height: 90%;
+  height: fit-content;
   background: #2cb996;
   padding: 1rem;
   border-radius: 1rem;
@@ -98,6 +98,7 @@ img {
   box-shadow: 0.4rem 0.4rem #05060f;
   overflow: hidden;
   color: black;
+  margin-bottom: 50px;
 }
 
 .cod {
