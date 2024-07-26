@@ -59,6 +59,7 @@ if (isset($_SESSION["tbname"])){//getting the user table name
                     <input type="date" name="date" class="detail-input" ><br>
                     </div>
                 </div>
+                <div class="hidden">
                 <label for="catogory" class="label">Catogory: </label><br>
                 <div class="debit-details">
                 <div class="option">
@@ -86,6 +87,7 @@ if (isset($_SESSION["tbname"])){//getting the user table name
                          </div>
                 </div>
             </div>    
+        </div>
                <center> <input type="submit" name="submit" value="Enter Details" class=" detail-input submit"><center>
 
         </div>
