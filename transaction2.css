@@ -1,0 +1,39 @@
+body {
+  font-family: "outfit";
+}
+.img-container {
+  display: flex;
+  height: 550px;
+  width: 50%;
+  justify-self: center;
+  align-self: center;
+}
+.img {
+  height: 100%;
+  width: 100%;
+}
+.span1 {
+  color: #24977b;
+}
+.butt {
+  --font-color: #ffffff;
+  --font-color-sub: #666;
+  --bg-color: #24977b;
+  --main-color: black;
+  margin: 50px auto 50px 50px;
+  width: 170px;
+  height: 40px;
+  border-radius: 5px;
+  border: 2px solid var(--main-color);
+  background-color: var(--bg-color);
+  box-shadow: 4px 4px var(--main-color);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--font-color);
+  cursor: pointer;
+}
+
+.butt:active {
+  box-shadow: 0px 0px var(--main-color);
+  transform: translate(3px, 3px);
+}
