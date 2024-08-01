@@ -29,6 +29,19 @@ if($qry){
     else{
         echo "error";
     }*/
+    $dbsql="CREATE DATABASE $tableId";
+    $dbQuery=mysqli_query($conn, $dbsql);
+    if($dbQuery){
+        //
+        $db_server="localhost";
+        $db_user="root";
+        $db_name="$tableId";
+        $db_pass="";
+        $dbconn="";
+
+        $dbconn= mysqli_connect($db_server,$db_user,$db_pass,$db_name);
+        //
+
     $insertSql="CREATE TABLE $tableId(
         id INT(11) NOT NULL AUTO_INCREMENT,
         COD VARCHAR(20) NOT NULL , 
@@ -36,7 +49,8 @@ if($qry){
         catogory VARCHAR(100)  ,
         scatogory VARCHAR(100) , 
         DOT DATE NOT NULL , PRIMARY KEY (id))";//DOT==Date Of Transation COD==Credit Or Debit
-     $insertion=mysqli_query($conn, $insertSql);
+     $insertion=mysqli_query($dbconn, $insertSql);
+     
      /*if($insertion){
         echo "inserted";   }
         else{
@@ -48,7 +62,7 @@ if($qry){
     echo"<div class='ill'><img class='img' src='signUP.jpg' class='img'></div>";
    echo "<button class='butt' onclick=\"window.location.href='http://localhost/MiniProject/login.php';\">
    Log In →
-    </button >";
+    </button >";}
 }
 else{
 
