@@ -38,7 +38,7 @@ if($qry){
         $db_name="$tableId";
         $db_pass="";
         $dbconn="";
-
+        
         $dbconn= mysqli_connect($db_server,$db_user,$db_pass,$db_name);
         //
 

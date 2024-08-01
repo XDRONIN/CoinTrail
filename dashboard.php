@@ -9,33 +9,34 @@ if (isset($_SESSION["email"])){//getting the email from session
    // echo"".$idrow["0"];
     $tbname="user_".$idrow[0];
     $_SESSION["tbname"]=$tbname;
+    $dbconn= mysqli_connect("localhost","root","",$tbname);
    //echo $tbname;
    $credSql="SELECT SUM(amount) FROM $tbname WHERE COD='credit';";//credit amount
-   $credResult = mysqli_query($conn,$credSql);
+   $credResult = mysqli_query($dbconn,$credSql);
    $credRow = mysqli_fetch_array($credResult);
    $credAmount= $credRow["0"];
    $debSql="SELECT SUM(amount) FROM $tbname WHERE COD='debit';";//debit amount
-   $debResult = mysqli_query($conn,$debSql);
+   $debResult = mysqli_query($dbconn,$debSql);
    $debRow = mysqli_fetch_array($debResult);
    $debAmount= $debRow["0"];
    $essSql="SELECT SUM(amount) FROM $tbname WHERE catogory='Essentials';";//Essentials amount
-   $essResult = mysqli_query($conn,$essSql);
+   $essResult = mysqli_query($dbconn,$essSql);
    $essRow = mysqli_fetch_array($essResult);
    $essAmount= $essRow["0"];
    $billSql="SELECT SUM(amount) FROM $tbname WHERE catogory='Bills';";//Bills amount
-   $billResult = mysqli_query($conn,$billSql);
+   $billResult = mysqli_query($dbconn,$billSql);
    $billRow = mysqli_fetch_array($billResult);
    $billAmount= $billRow["0"];
    $savSql="SELECT SUM(amount) FROM $tbname WHERE catogory='Savings';";//Savings amount
-   $savResult = mysqli_query($conn,$savSql);
+   $savResult = mysqli_query($dbconn,$savSql);
    $savRow = mysqli_fetch_array($savResult);
    $savAmount= $savRow["0"];
    $othSql="SELECT SUM(amount) FROM $tbname WHERE catogory='Others';";//Others amount
-   $othResult = mysqli_query($conn,$othSql);
+   $othResult = mysqli_query($dbconn,$othSql);
    $othRow = mysqli_fetch_array($othResult);
    $othAmount= $othRow["0"];
    $tranSql="SELECT COD,amount,DOT,catogory,scatogory FROM $tbname ORDER BY id DESC";
-   $tranResult = mysqli_query($conn,$tranSql);
+   $tranResult = mysqli_query($dbconn,$tranSql);
   
    
 }

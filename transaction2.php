@@ -3,6 +3,7 @@ session_start();
 include("connect.php");
 if (isset($_SESSION["tbname"])){//getting the user table name
     $tbname=$_SESSION["tbname"];
+    $dbconn= mysqli_connect("localhost","root","",$tbname);
     //echo $tbname;
 }
     $COD=$_POST['cod'];
@@ -16,7 +17,7 @@ if (isset($_SESSION["tbname"])){//getting the user table name
     //echo $catogory;
    // echo $scatogory;
     $sql="INSERT INTO $tbname (COD, amount, catogory, scatogory, DOT) VALUES ('$COD', '$amount', '$catogory', '$scatogory', '$DOT')";
-    $query=mysqli_query($conn,$sql);
+    $query=mysqli_query($dbconn,$sql);
     /*if($query){
         echo "INSERTED";}
         else{
