@@ -9,22 +9,25 @@
     
 <button>ADD</button>
 <div class="budget_add">
-    <form method="POST" action="" id="form">
+    <form method="POST" action="" >
+        <div id="form">
         TOTAL BUDGET:<input type="text" value="Total" name="item0" readonly> <input type="number" name="price0">
-        <button class="add_item" onclick="addItem()">Add Item</button>
+</div>
 
     </form>
+    <button class="add_item" onclick="addItem()">Add Item</button>
 </div>
 
 </body>
 <script>
     const budget_add=document.querySelector('.budget_add');
     let counter=0;
-    const form=document.getElementById("form");
-    form.addEventListener("submit",(e)=>{
-        e.preventDefault();
-    })
-function addItem(){
+   const form=document.getElementById("form");
+    //form.addEventListener("submit",(e)=>{
+    //    e.preventDefault();
+   // })
+function addItem(){ 
+    
     counter=counter+1;
     let newItem= document.createElement('input');
     newItem.type="text";
@@ -34,8 +37,9 @@ function addItem(){
     newPrice.type="number";
     newPrice.name="price"+counter;
     console.log(newPrice.name) ;
-    budget_add.appendChild(newPrice);
-    budget_add.appendChild(newItem);
+    form.appendChild(newPrice);
+    form.appendChild(newItem);
+   
     
     
 
