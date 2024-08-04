@@ -14,23 +14,25 @@ $bCreateSql="CREATE TABLE $bTb(
 $bCreateQuery=mysqli_query($conn,$bCreateSql);
 
 
-/*for($i= 0;$i<50;$i++){
+for($i= 0;$i<50;$i++){
     $nextItem=$_POST['item'.$i.''];
     $nextPrice=$_POST['price'.$i.''];
    // echo''.$nextItem.'';
    if($nextItem!=null && $nextPrice!=null){
-    $sql1='INSERT INTO ';
+    $insertSql="INSERT INTO $bTb (item,price) VALUES ('$nextItem','$nextPrice')";
+    $insertQuery=mysqli_query($conn,$insertSql);
     
    }
    elseif($nextItem!=null){
-    $items[$i]=$nextItem;
+    $insertSql2="INSERT INTO $bTb (item) VALUES ('$nextItem')";
+    $insertQuery2=mysqli_query($conn,$insertSql2);
 
 }
-else{
-    break;
+   else{
+    break;//exit loop if no more values added
 }
 
-}*/
+}
   
-
+ 
        ?>
