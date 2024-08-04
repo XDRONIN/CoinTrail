@@ -11,6 +11,7 @@
 <div class="budget_add">
     <form method="POST" action="test.php" id="form" >
         <input type="submit">
+        <input type="text" name="bName" placeholder="BUDGET NAME">
         
         TOTAL BUDGET:<input type="text" value="Total" name="item0" readonly> <input type="number" name="price0">
 

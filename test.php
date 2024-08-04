@@ -1,20 +1,26 @@
 <?php
-$item0=$_POST['item0'];
-$price0=$_POST['price0'];
+session_start();
+include("connect.php");
+$tbName=$_SESSION['tbname'];
+$bName=$_POST['bName'];
+$bTb=$tbName.'_'.$bName.'';//BudgetTable 
+//echo''.$bTb.'';
+//Budget Table Creation 
+$bCreateSql="CREATE TABLE $bTb(
+    id INT(11) NOT NULL AUTO_INCREMENT,
+    item VARCHAR(20) NOT NULL , 
+    price INT(11) , PRIMARY KEY (id)
+) ";
+$bCreateQuery=mysqli_query($conn,$bCreateSql);
 
-//echo''.$item1.''.$price1;
 
-$items=array();
-$items[0]=$item0;
-$prices=array();
-$prices[0]=$price0;
-for($i= 1;$i<50;$i++){
+/*for($i= 0;$i<50;$i++){
     $nextItem=$_POST['item'.$i.''];
     $nextPrice=$_POST['price'.$i.''];
    // echo''.$nextItem.'';
    if($nextItem!=null && $nextPrice!=null){
-    $items[$i]=$nextItem;
-    $prices[$i]=$nextPrice;
+    $sql1='INSERT INTO ';
+    
    }
    elseif($nextItem!=null){
     $items[$i]=$nextItem;
@@ -24,10 +30,7 @@ else{
     break;
 }
 
-}
-foreach($items as $item) {
-    echo"".$item."";}
- foreach($prices as $price) {
-        echo"".$price."";}    
+}*/
+  
 
        ?>
