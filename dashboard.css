@@ -78,6 +78,7 @@ body {
 .span1 {
   color: #ffffff;
 }
+
 .menu {
   display: flex;
   align-self: center;
@@ -182,7 +183,8 @@ a {
   display: flex;
   align-self: center;
   justify-content: center;
-  margin-left: 45%;
+  font-size: 20px;
+  margin-right: 20px;
   margin-top: 18px;
 
   width: 20px;
