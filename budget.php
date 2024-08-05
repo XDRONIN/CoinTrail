@@ -12,6 +12,11 @@ $query=mysqli_query($conn,$sql);
 
 
 ?>
+<script>
+    let btb;
+    let parts;
+    let budget;
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +39,7 @@ $query=mysqli_query($conn,$sql);
       <div class="profile"><?php echo $name?></div>
 </div>
     <button onclick =" window.location.href='insertBudget.php'">ADD BUDGET</button>
-    <div container>
+    <div class="container">
     <?php 
     while($row=mysqli_fetch_array($query)){
         //echo $pattern;
@@ -44,13 +49,18 @@ $query=mysqli_query($conn,$sql);
     
     ?>
     <div class="card">
+        <script> btb='<?php echo $bTb;?>';
+         parts = btb.split('_');
+         budget=parts.slice(2).join('');
+        </script>
+        <h2 class="bud-name"><script>document.write(budget)</script></h2><br>
     <?php 
         $cardSql="SELECT * FROM $bTb WHERE id > 1";
         $cardQuery= mysqli_query($conn,$cardSql);
         while($cardRow=mysqli_fetch_array($cardQuery)){
-            echo"".$cardRow["1"]." ".$cardRow["2"];
+            echo"".$cardRow["1"]." ".$cardRow["2"]."<br>";
         
-}?><br></div><?php } ?>
+}?></div><?php } ?>
     
     
     
