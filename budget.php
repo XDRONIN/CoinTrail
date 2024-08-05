@@ -55,8 +55,13 @@ $query=mysqli_query($conn,$sql);
         </script>
         <h2 class="bud-name"><script>document.write(budget)</script></h2><br>
     <?php 
-        $cardSql="SELECT * FROM $bTb WHERE id > 1";
+        $cardSql="SELECT * FROM $bTb ";
         $cardQuery= mysqli_query($conn,$cardSql);
+        $cardRow=mysqli_fetch_array($cardQuery);
+        if($cardRow[0]==1){?>
+        <h3 class="total"><?php  echo"".$cardRow["1"]." ".$cardRow["2"]."<br>";?></h3>
+       <?php }
+       
         while($cardRow=mysqli_fetch_array($cardQuery)){
             echo"".$cardRow["1"]." ".$cardRow["2"]."<br>";
         
