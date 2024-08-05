@@ -55,12 +55,14 @@ body {
   display: flex;
   flex-direction: column;
   font-size: 20px;
-  width: 190px;
+  min-width: 190px;
+  max-width: fit-content;
   background: #00ffa0;
   padding: 1rem;
   border-radius: 1rem;
   border: 0.5vmin solid #05060f;
   box-shadow: 0.4rem 0.4rem #05060f;
+  align-items: center;
 
   color: black;
   min-height: 200px;
@@ -69,7 +71,9 @@ body {
 }
 .bud-name {
   margin: 5px;
+  margin-bottom: 0;
 }
 .total {
   margin: 4px;
+  margin-top: 2px;
 }

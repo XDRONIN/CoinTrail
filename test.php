@@ -29,6 +29,9 @@ for($i= 0;$i<50;$i++){
 
 }
    else{
+    header("Location:http://localhost/MiniProject/budget.php
+    ");
+    exit();
     break;//exit loop if no more values added
 }
 

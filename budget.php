@@ -53,7 +53,7 @@ $query=mysqli_query($conn,$sql);
          parts = btb.split('_');
          budget=parts.slice(2).join('');
         </script>
-       <center> <h2 class="bud-name"><script>document.write(budget)</script></h2><br></center>
+        <h2 class="bud-name"><script>document.write(budget)</script></h2><br>
     <?php 
         $cardSql="SELECT * FROM $bTb ";
         $cardQuery= mysqli_query($conn,$cardSql);
