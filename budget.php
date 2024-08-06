@@ -37,8 +37,9 @@ $query=mysqli_query($conn,$sql);
 <div class="navbar">
 <h2 class="logo">Coin<span class="span1">Trail</span></h2>
       <div class="profile"><?php echo $name?></div>
-</div>
-    <button onclick =" window.location.href='insertBudget.php'">ADD BUDGET</button>
+</div><div class="bud-details">
+    <button onclick =" window.location.href='insertBudget.php'" class="add">ADD BUDGET</button>
+    <h1 class="bud">Your&nbsp; <span style="color: #24977b;"> Budgets<span></h1></div>
     <div class="container">
     <?php 
     while($row=mysqli_fetch_array($query)){

@@ -50,9 +50,11 @@ body {
 .container {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 .card {
   display: flex;
+  flex: 1;
   flex-direction: column;
   font-size: 20px;
   min-width: 190px;
@@ -76,4 +78,28 @@ body {
 .total {
   margin: 4px;
   margin-top: 2px;
+}
+.add {
+  margin: 10px;
+  width: 120px;
+  height: 60px;
+
+  border-radius: 5px;
+  border: 2px solid #000000;
+  background-color: #00ffa0;
+  box-shadow: 4px 4px #000000;
+  font-size: 17px;
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+}
+.bud-details {
+  display: flex;
+  width: 100%;
+}
+.bud {
+  display: flex;
+  align-self: center;
+  margin-left: 34%;
+  text-decoration: underline;
 }
