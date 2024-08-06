@@ -1,3 +1,6 @@
+<?php
+session_start();
+ $name=$_SESSION['name'];?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,21 +8,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+<link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+ <link rel="stylesheet" href="insertBudget.css">
 <body>
-    
+<div class="navbar">
+<h2 class="logo">Coin<span class="span1">Trail</span></h2>
+      <div class="profile"><?php echo $name?></div>
+</div>
+<div class="container">
+    <div class="ill"><img src="budget.jpg" class="img"></div>
 
 <div class="budget_add">
     <form method="POST" action="test.php" id="form" >
-        <input type="submit">
-        <input type="text" name="bName" placeholder="BUDGET NAME">
+        <input type="submit"><br>
+        <input type="text" name="bName" placeholder="BUDGET NAME"><br>
         
-        TOTAL BUDGET:<input type="text" value="Total" name="item0" readonly> <input type="number" name="price0">
+        TOTAL BUDGET:<input type="text" value="Total" name="item0" readonly> <input type="number" name="price0"><br>
 
 
     </form>
     <button class="add_item" onclick="addItem()">Add Item</button>
 </div>
-
+</div>
 </body>
 <script>
     const budget_add=document.querySelector('.budget_add');
@@ -39,13 +56,18 @@ function addItem(){
     let newItem= document.createElement('input');
     newItem.type="text";
     newItem.name="item"+counter;
-    console.log(newItem.name) ;
+    newItem.placeholder="Add Item Name"
+    //console.log(newItem.name) ;
     let newPrice= document.createElement('input');
     newPrice.type="number";
     newPrice.name="price"+counter;
-    console.log(newPrice.name) ;
+    //console.log(newPrice.name) ;
+    let br=document.createElement('br')
+    newPrice.placeholder="Add Item Price"
     form.appendChild(newItem);
+    form.appendChild(br);
     form.appendChild(newPrice);
+    form.appendChild(br);
    
     
     
