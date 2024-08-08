@@ -27,14 +27,14 @@ session_start();
 
 <div class="budget_add">
     <form method="POST" action="test.php" id="form" >
-        <input type="submit"><br>
-        <input type="text" name="bName" placeholder="BUDGET NAME"><br>
+        <input type="submit" class="btn" style="color: #24977b;"><br>
+        <input type="text" name="bName" placeholder="BUDGET NAME" class="input"><br>
         
-        TOTAL BUDGET:<input type="text" value="Total" name="item0" readonly> <input type="number" name="price0"><br>
+        <input type="text" value="Total" name="item0" readonly class="input"> <input type="number" name="price0" class="input" placeholder="Add Max Budget"><br>
 
 
     </form>
-    <button class="add_item" onclick="addItem()">Add Item</button>
+    <button class="add_item btn" onclick="addItem()">Add Item</button>
 </div>
 </div>
 </body>
@@ -56,7 +56,8 @@ function addItem(){
     let newItem= document.createElement('input');
     newItem.type="text";
     newItem.name="item"+counter;
-    newItem.placeholder="Add Item Name"
+    newItem.placeholder="Add Item Name";
+    newItem.classList.add('input');
     //console.log(newItem.name) ;
     let newPrice= document.createElement('input');
     newPrice.type="number";
@@ -64,6 +65,7 @@ function addItem(){
     //console.log(newPrice.name) ;
     let br=document.createElement('br')
     newPrice.placeholder="Add Item Price"
+    newPrice.classList.add('input');
     form.appendChild(newItem);
     form.appendChild(br);
     form.appendChild(newPrice);
