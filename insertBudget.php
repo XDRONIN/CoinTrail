@@ -26,7 +26,7 @@ session_start();
     <div class="ill"><img src="budget.jpg" class="img"></div>
 
 <div class="budget_add">
-    <form method="POST" action="test.php" id="form" >
+    <form method="POST" action="insertion.php" id="form" >
         <input type="submit" class="btn" style="color: #24977b;"><br>
         <input type="text" name="bName" placeholder="BUDGET NAME" class="input"><br>
         

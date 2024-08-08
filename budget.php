@@ -66,7 +66,9 @@ $query=mysqli_query($conn,$sql);
         while($cardRow=mysqli_fetch_array($cardQuery)){
             echo"".$cardRow["1"]." :   $".$cardRow["2"]."<br>";
         
-}?></div><?php } ?>
+}?>
+<button class="dltButton"></button>
+</div><?php } ?>
     
     
     
