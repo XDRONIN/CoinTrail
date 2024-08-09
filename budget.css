@@ -113,6 +113,9 @@ body {
   margin-top: 5%;
   border: none;
 }
+.dltButton:hover {
+  cursor: pointer;
+}
 .dltButton::after {
   content: "delete";
   position: absolute;
