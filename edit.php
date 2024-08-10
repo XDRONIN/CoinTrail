@@ -46,9 +46,9 @@ $bTb=$_POST['Btb-input'];
 $showSql="SELECT * FROM $bTb ";
 $showQuery= mysqli_query($conn,$showSql);
 
-$counter=0;
+$counter=1;
 while($showRow=mysqli_fetch_array($showQuery)){
-    if($counter!= 0){
+    if($counter!= 1){
         
     
     ?>
@@ -65,7 +65,9 @@ $counter++;
 else{ ?> 
 <input type="text" name='<?php echo "item".$counter?>' value='<?php echo $showRow['1']?>' class="input" readonly><!--TOTAL  -->
     <input type="number" name='<?php echo "price".$counter?>' value='<?php echo $showRow['2']?>' class="input"><br>
-<?php }
+    
+<?php
+$counter++; }
 }
 ?>
 
