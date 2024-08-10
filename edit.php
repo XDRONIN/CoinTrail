@@ -39,22 +39,34 @@ $bTb=$_POST['Btb-input'];
 
 <form method="post" action="editaction.php" id="form">
 <input class="btn" type="submit" style="margin: 0px;">
- <center><h2 class="bud-name" style="margin-top: 0px;"><script>document.write(budget)</script></h2></center> <br>  
+ <center><h2 class="bud-name" style="margin-top: 0px;"><script>document.write(budget)</script></h2></center> <br> 
+ <input type="text" value="<?php echo $bTb?>" style="display: none;" name="Btb-input"><!-- Sends the tb name to be updated to the editaction.php--> 
 <?php
 
 $showSql="SELECT * FROM $bTb ";
 $showQuery= mysqli_query($conn,$showSql);
-$showRow=mysqli_fetch_array($showQuery);
+
 $counter=0;
 while($showRow=mysqli_fetch_array($showQuery)){
+    if($counter!= 0){
+        
+    
     ?>
+   
     <input type="text" name='<?php echo "item".$counter?>' value='<?php echo $showRow['1']?>' class="input">
     <input type="number" name='<?php echo "price".$counter?>' value='<?php echo $showRow['2']?>' class="input">
     <br>
     
 
 
+<?php
+$counter++;
+ }
+else{ ?> 
+<input type="text" name='<?php echo "item".$counter?>' value='<?php echo $showRow['1']?>' class="input" readonly><!--TOTAL  -->
+    <input type="number" name='<?php echo "price".$counter?>' value='<?php echo $showRow['2']?>' class="input"><br>
 <?php }
+}
 ?>
 
 </form> 
@@ -74,7 +86,7 @@ while($showRow=mysqli_fetch_array($showQuery)){
     })*/
 function addItem(){ 
     
-    counter=counter+1;
+    
     let newItem= document.createElement('input');
     newItem.type="text";
     newItem.name="item"+counter;
@@ -92,7 +104,7 @@ function addItem(){
     form.appendChild(br);
     form.appendChild(newPrice);
     form.appendChild(br);
-   
+    counter=counter+1;
     
     
 
