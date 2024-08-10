@@ -13,9 +13,10 @@ $query=mysqli_query($conn,$sql);
 
 ?>
 <script>
-    let btb;
+    let btb=[];//stores the balbe name of each budget
     let parts;
     let budget;
+    let counter=0;//controls btb array
 </script>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,6 +42,7 @@ $query=mysqli_query($conn,$sql);
     <button onclick =" window.location.href='insertBudget.php'" class="add">ADD BUDGET</button>
     <h1 class="bud">Your&nbsp; <span style="color: #24977b;"> Budgets<span></h1></div>
     <div class="container">
+
     <?php 
     while($row=mysqli_fetch_array($query)){
         //echo $pattern;
@@ -49,11 +51,16 @@ $query=mysqli_query($conn,$sql);
 
     
     ?>
+    
     <div class="card">
-        <script> btb='<?php echo $bTb;?>';
-         parts = btb.split('_');
+        <script> btb[counter]='<?php echo $bTb;?>';
+         parts = btb[counter].split('_');
          budget=parts.slice(2).join('');
+         console.log(btb[counter])
+         counter++;
         </script>
+        <form action="deletion.php" method="post">
+            <input type="text" name="Btb-input" class="Btb-input" style="display: none;"><!-- stores the table name of the particular budget for deletion/edit  not visble in DOM-->
         <h2 class="bud-name"><script>document.write(budget)</script></h2><br>
     <?php 
         $cardSql="SELECT * FROM $bTb ";
@@ -67,11 +74,18 @@ $query=mysqli_query($conn,$sql);
             echo"".$cardRow["1"]." :   $".$cardRow["2"]."<br>";
         
 }?>
-<button class="dltButton"></button>
+<button class="dltButton"></button></form>
 </div><?php } ?>
     
     
     
     </div>
 </body>
+<script>
+    let inputs=document.querySelectorAll('.Btb-input');//takes all the inputs in the array inputs
+    for (let i = 0; i < inputs.length; i++) {
+        inputs[i].value=btb[i];//for each input field in inputs a values fron btb array (Budget table names) is given
+        
+    }
+</script>
 </html>
