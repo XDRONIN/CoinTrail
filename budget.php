@@ -59,7 +59,7 @@ $query=mysqli_query($conn,$sql);
          console.log(btb[counter])
          counter++;
         </script>
-        <form action="deletion.php" method="post">
+        <form  method="post">
             <input type="text" name="Btb-input" class="Btb-input" style="display: none;"><!-- stores the table name of the particular budget for deletion/edit  not visble in DOM-->
         <center><h2 class="bud-name"><script>document.write(budget)</script></h2></center><br>
     <?php 
@@ -74,7 +74,10 @@ $query=mysqli_query($conn,$sql);
             echo"".$cardRow["1"]." :   $".$cardRow["2"]."<br>";
         
 }?>
-<button class="dltButton"></button></form>
+<div class="buttons">
+<button class="dltButton" formaction="deletion.php"></button>
+<button class="editButt" formaction="edit.php"></button></div>
+</form>
 </div><?php } ?>
     
     
