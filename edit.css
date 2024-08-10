@@ -4,6 +4,7 @@ body {
 
   font-family: "outfit";
   background-color: #ffffff;
+  overflow: hidden;
 }
 .navbar {
   display: flex;
@@ -70,8 +71,9 @@ body {
 
   color: black;
   min-height: 500px;
-  max-height: fit-content;
+  max-height: 600px;
   margin: 10px;
+  overflow-y: auto;
 }
 .input {
   width: 350px;

@@ -23,7 +23,7 @@ $name=$_SESSION['name'];
 <h2 class="logo">Coin<span class="span1">Trail</span></h2>
       <div class="profile"><?php echo $name?></div>
 </div>
-
+<div style="display: block; height: 2px; width:100%"></div>
 <?php
 include('connect.php'); 
 $bTb=$_POST['Btb-input'];
@@ -36,9 +36,10 @@ $bTb=$_POST['Btb-input'];
         </script>
 <div class="container">
 <div class="card">
-<h2 class="bud-name"><script>document.write(budget)</script></h2><br>
+
 <form method="post" action="editaction.php" id="form">
-        
+<input class="btn" type="submit" style="margin: 0px;">
+ <center><h2 class="bud-name" style="margin-top: 0px;"><script>document.write(budget)</script></h2></center> <br>  
 <?php
 
 $showSql="SELECT * FROM $bTb ";
@@ -55,10 +56,48 @@ while($showRow=mysqli_fetch_array($showQuery)){
 
 <?php }
 ?>
-<center><input class="btn" type="submit" style="margin-bottom: none;"></center>
+
 </form> 
 <button class="add_item btn" style="margin-top: none; color : #323232" onclick="addItem()">Add Item</button>
 </div></div>
 </body>
+<script>
+   counter=<?php echo $counter;?>;
+   const form=document.getElementById("form");
+    /*form.addEventListener("submit",(e)=>{
+       e.preventDefault();
+       //console.log("Submitted");
+      
+       //echo''.$item1.''.$price1.'';
+       
+       console.log();
+    })*/
+function addItem(){ 
+    
+    counter=counter+1;
+    let newItem= document.createElement('input');
+    newItem.type="text";
+    newItem.name="item"+counter;
+    newItem.placeholder="Add Item Name";
+    newItem.classList.add('input');
+    //console.log(newItem.name) ;
+    let newPrice= document.createElement('input');
+    newPrice.type="number";
+    newPrice.name="price"+counter;
+    //console.log(newPrice.name) ;
+    let br=document.createElement('br')
+    newPrice.placeholder="Add Item Price"
+    newPrice.classList.add('input');
+    form.appendChild(newItem);
+    form.appendChild(br);
+    form.appendChild(newPrice);
+    form.appendChild(br);
+   
+    
+    
 
+
+}
+
+</script>
 </html>
