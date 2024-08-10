@@ -61,7 +61,7 @@ $query=mysqli_query($conn,$sql);
         </script>
         <form action="deletion.php" method="post">
             <input type="text" name="Btb-input" class="Btb-input" style="display: none;"><!-- stores the table name of the particular budget for deletion/edit  not visble in DOM-->
-        <h2 class="bud-name"><script>document.write(budget)</script></h2><br>
+        <center><h2 class="bud-name"><script>document.write(budget)</script></h2></center><br>
     <?php 
         $cardSql="SELECT * FROM $bTb ";
         $cardQuery= mysqli_query($conn,$cardSql);
