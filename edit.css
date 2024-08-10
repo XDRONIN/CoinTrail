@@ -49,35 +49,29 @@ body {
 }
 .container {
   display: flex;
+  height: 100vh;
   width: 100%;
-  height: 100%;
+  justify-content: center;
+  align-items: center;
 }
-.ill {
-  display: flex;
-  flex: 1;
-}
-.img {
-  height: 900px;
-}
-
-.budget_add {
+.card {
   display: flex;
   flex: 1;
   flex-direction: column;
   font-size: 20px;
-  min-width: 190px;
-  align-self: center;
-  background: #24977b;
+  min-width: 500px;
+  max-width: fit-content;
+  background: #00ffa0;
   padding: 1rem;
   border-radius: 1rem;
   border: 0.5vmin solid #05060f;
   box-shadow: 0.4rem 0.4rem #05060f;
-  max-width: fit-content;
-  color: black;
+  align-items: center;
 
-  height: fit-content;
+  color: black;
+  min-height: 500px;
+  max-height: fit-content;
   margin: 10px;
-  margin-right: 50px;
 }
 .input {
   width: 350px;
@@ -88,7 +82,7 @@ body {
   box-shadow: 6px 6px #323232;
   font-size: 21px;
   font-weight: 600;
-
+  color: var(--font-color);
   padding: 7px 14px;
   outline: none;
   margin: 5px;
@@ -104,6 +98,6 @@ body {
   box-shadow: 6px 6px #323232;
   font-size: 24px;
   font-weight: 600;
-
+  color: #24977b;
   cursor: pointer;
 }
