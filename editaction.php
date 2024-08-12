@@ -16,13 +16,27 @@ for($i= 1;$i<50;$i++){
     }
     else{
         if($checkRow){
+            if($nextItem!=null and $nextPrice!=null){
             $sql2="UPDATE $bTb SET item = '$nextItem', price = '$nextPrice' WHERE id = $i";
-            $result2=mysqli_query($conn,$sql2);
+            $result2=mysqli_query($conn,$sql2);}
+            elseif($nextItem!=null and $nextPrice==null){
+                $sql2="UPDATE $bTb SET item = '$nextItem', price = NULL WHERE id = $i";
+                $result2=mysqli_query($conn,$sql2);}
+            elseif($nextItem==null && $nextPrice!=null){
+                echo "<script>alert('Item Name Cant Be Empty')</script>";
+               
+                break;
+            }
         }
-        elseif($checkRow==false && $nextItem !=''||$nextPrice!=''){
+        elseif($checkRow==false and ($nextItem !=null and $nextPrice!=null)){
+            
             $sql3= "INSERT INTO $bTb (item,price) VALUES ('$nextItem','$nextPrice')";
-            $result3=mysqli_query($conn,$sql3);
-        }
+            $result3=mysqli_query($conn,$sql3);}
+        elseif($checkRow==false and $nextItem !=null and $nextPrice==null){
+                $sql3= "INSERT INTO $bTb (item,price) VALUES ('$nextItem',NULL)";
+                    $result3=mysqli_query($conn,$sql3);
+            }
+        
         else{
             header("Location:http://localhost/MiniProject/budget.php
             ");
@@ -30,5 +44,6 @@ for($i= 1;$i<50;$i++){
             break;//exit loop if no more values added
         }
     }
-}
+} 
+
 ?>
