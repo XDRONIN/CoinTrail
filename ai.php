@@ -15,10 +15,19 @@
     />
  <link rel="stylesheet" href="ai.css">
 <body>
-<div class="navbar">
+     <div class="navbar">
         <a href="dashboard.php">Home</a>
       <h2 class="logo">Coin<span class="span1">Trail</span></h2>
       <div class="profile">NAME</div>
     </div>
+    <script type="importmap">
+  {
+    "imports": {
+      "@google/generative-ai": "https://esm.run/@google/generative-ai"
+    }
+  }
+</script>
+<script type="module" src="ai.js"></script>
 </body>
+
 </html>
