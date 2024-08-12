@@ -58,3 +58,47 @@ a:hover {
   color: white;
   cursor: pointer;
 }
+.prompt-div {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  align-items: center;
+}
+.prompt {
+  display: flex;
+  flex-wrap: wrap;
+  max-height: fit-content;
+  overflow-y: scroll;
+  width: 90%;
+  height: 56px;
+  border-radius: 7px;
+  border: 3px solid #323232;
+  background-color: #fff;
+  box-shadow: 6px 6px #24977b;
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--font-color);
+  padding: 7px 14px;
+  outline: none;
+  margin: 5px;
+  margin-bottom: 10px;
+}
+.submit {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 108px;
+  height: 76px;
+
+  border-radius: 100px;
+  border: 3px solid #323232;
+  background-color: #fff;
+  box-shadow: 6px 6px #323232;
+  font-size: 24px;
+  font-weight: 600;
+  color: #24977b;
+  cursor: pointer;
+}
