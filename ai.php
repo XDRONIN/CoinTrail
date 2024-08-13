@@ -45,7 +45,7 @@ $jsonTransactions = json_encode($transactions);
       <h2 class="logo">Coin<span class="span1">Trail</span></h2>
       <div class="profile"><?php echo $name?></div>
     </div>
-    <div class="output" style="height: 200px; width:100%;"></div>
+    <div class="output" ></div>
     <div class="prompt-div" id="prompt-div">
         <input type="text" class="prompt" id="prompt" placeholder="Enter Your Question.."> 
         <button id="submit" class="submit" > <svg
@@ -106,9 +106,17 @@ genButton.addEventListener("click", async () => {
   prmpt = document.getElementById("prompt").value;
   result = await chat.sendMessage(prmpt);
   console.log(result.response.text());
-  output.innerText = `${result.response.text()}`;
-  console.log(prmpt);
+  let newOutput=addLineBreaks(result.response.text());
+  //console.log(newOutput)
+  output.innerText = `${newOutput}`;
+  //console.log(prmpt);
 });
+function addLineBreaks(text) {
+  // Replace '#' and '*' with empty string
+  const processedText = text.replace(/[#*]/g, " ");
+  return processedText;
+
+}
 
 </script>
 </body>
