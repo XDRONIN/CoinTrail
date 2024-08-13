@@ -45,7 +45,18 @@ $jsonTransactions = json_encode($transactions);
       <h2 class="logo">Coin<span class="span1">Trail</span></h2>
       <div class="profile"><?php echo $name?></div>
     </div>
-    <div class="output" ></div>
+   <div class="spinner">
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+  <div></div>
+</div>
+<h2 id="h2"></h2>
+    <div class="output" >
+     
+    </div>
     <div class="prompt-div" id="prompt-div">
         <input type="text" class="prompt" id="prompt" placeholder="Enter Your Question.."> 
         <button id="submit" class="submit" > <svg
@@ -83,6 +94,9 @@ const genAI = new GoogleGenerativeAI(API_KEY);
 // The Gemini 1.5 models are versatile and work with most use cases
 const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 let output = document.querySelector(".output");
+const spinner = document.querySelector(".spinner");
+const h2=document.getElementById("h2");
+
 
 let genButton = document.getElementById("submit");
 let prmpt;
@@ -100,14 +114,23 @@ const chat = model.startChat({
     },
   ],
 });
+showLoading();
 let result = await chat.sendMessage("hello");
-console.log(result.response.text());
+//console.log(result.response.text());
+let newOutput=addLineBreaks(result.response.text());
+hideLoading()
+h2.innerText = 'Hello, <?php echo $name?>'
+output.innerText = `${newOutput}`;
 genButton.addEventListener("click", async () => {
+  output.innerText = ``;
+  h2.innerText = ``;
+  showLoading();
   prmpt = document.getElementById("prompt").value;
   result = await chat.sendMessage(prmpt);
-  console.log(result.response.text());
+  //console.log(result.response.text());
   let newOutput=addLineBreaks(result.response.text());
   //console.log(newOutput)
+  hideLoading()
   output.innerText = `${newOutput}`;
   //console.log(prmpt);
 });
@@ -116,6 +139,12 @@ function addLineBreaks(text) {
   const processedText = text.replace(/[#*]/g, " ");
   return processedText;
 
+}
+function showLoading() {
+  spinner.style.display = "flex";
+}
+function hideLoading() {
+  spinner.style.display = "none";
 }
 
 </script>
