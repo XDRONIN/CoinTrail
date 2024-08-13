@@ -1,3 +1,28 @@
+<?php
+session_start();
+include("connect.php");
+$tbname=$_SESSION['tbname'];
+$name=$_SESSION['name'];
+$Sql="SELECT * FROM $tbname ;";//
+
+   $Result = mysqli_query($conn,$Sql);
+   
+    $transactions=array();
+    $i=0;
+   
+   while($Row = mysqli_fetch_array($Result)){
+    $transactions[$i]=array($Row["1"],$Row["2"],$Row["3"],$Row["4"],$Row["5"]);
+    $i++;
+
+  }
+$jsonTransactions = json_encode($transactions);
+?>
+<script>
+ 
+  let transactions =<?php echo $jsonTransactions?>;
+  console.log(transactions);
+  
+</script>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,7 +43,7 @@
      <div class="navbar">
         <a href="dashboard.php">Home</a>
       <h2 class="logo">Coin<span class="span1">Trail</span></h2>
-      <div class="profile">NAME</div>
+      <div class="profile"><?php echo $name?></div>
     </div>
     <div class="output" style="height: 200px; width:100%;"></div>
     <div class="prompt-div" id="prompt-div">
