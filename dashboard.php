@@ -36,7 +36,10 @@ if (isset($_SESSION["email"])){//getting the email from session
    $othAmount= $othRow["0"];
    $tranSql="SELECT COD,amount,DOT,catogory,scatogory FROM $tbname ORDER BY id DESC";
    $tranResult = mysqli_query($conn,$tranSql);
-  
+   $namesql="SELECT name FROM users WHERE email='$email'";
+   $nameQuery=mysqli_query($conn,$namesql);
+  $name=mysqli_fetch_array($nameQuery);
+  $_SESSION["name"]=$name[0];
    
 }
 ?>
@@ -135,11 +138,11 @@ if (isset($_SESSION["email"])){//getting the email from session
       </div>
       
       <h2 class="logo">Coin<span class="span1">Trail</span></h2>
-      <div class="profile">NAME</div>
+      <div class="profile"  ><?php echo $name[0]?></div>
     </div>
     <div class="sidebar">
       <div class="page"><a href="http://localhost/MiniProject/transactions.php"> Transactions</a></div>
-      <div class="page"><a href="view.php">Custom View</a></div>
+      <div class="page"><a href="ai.php">Ai Assistance</a></div>
       <div class="page"><a href="budget.php">Budget</a></div>
     </div>
     <div class="balance">
