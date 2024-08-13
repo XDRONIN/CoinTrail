@@ -47,8 +47,10 @@ $apiKey=mysqli_fetch_array($fetchQuery);
      <div class="navbar">
         <a href="dashboard.php">Home</a>
       <h2 class="logo">Coin<span class="span1">Trail</span></h2>
+     
       <div class="profile"><?php echo $name?></div>
     </div>
+   <img src="AI.png" style="margin-top: 5px; margin-left:15px;">
    <div class="spinner">
   <div></div>
   <div></div>
