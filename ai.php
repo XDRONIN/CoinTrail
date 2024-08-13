@@ -16,6 +16,10 @@ $Sql="SELECT * FROM $tbname ;";//
 
   }
 $jsonTransactions = json_encode($transactions);
+$fetchSql="SELECT apiKey FROM API WHERE id=1";
+$fetchQuery=mysqli_query($conn,$fetchSql);
+$apiKey=mysqli_fetch_array($fetchQuery);
+
 ?>
 <script>
  
@@ -84,7 +88,7 @@ $jsonTransactions = json_encode($transactions);
   import { GoogleGenerativeAI } from "@google/generative-ai";
 
 // Fetch your API_KEY
-const API_KEY = "AIzaSyB7S5PhOblYRf-aqNKSAZRTstq-Dw6aqEw";
+const API_KEY = `<?php echo $apiKey['0']?>`;
 
 // Access your API key (see "Set up your API key" above)
 const genAI = new GoogleGenerativeAI(API_KEY);
