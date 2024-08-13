@@ -20,7 +20,7 @@ $jsonTransactions = json_encode($transactions);
 <script>
  
   let transactions =<?php echo $jsonTransactions?>;
-  console.log(transactions);
+  //console.log(transactions);
   
 </script>
 <!DOCTYPE html>
@@ -90,7 +90,9 @@ const chat = model.startChat({
   history: [
     {
       role: "user",
-      parts: [{ text: "You are a big football nerd living in brazil" }],
+      parts: [{ text: `${transactions} Is a 2d array which contains my complete Transaction history.Each element of the array holds details of a particular transaction.
+       "credit"= Money i got, "debit"= Money i spend , There are also 4 main catogories where i spend my money -"essentials","bills","savings","other". Then there is subcatogories such as
+        clothes,food,petrol,etc that specifies on what i spend my money on. I want You to go through the data and answer my questions like a money management expert ` }],
     },
     {
       role: "model",
