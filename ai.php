@@ -16,7 +16,7 @@ $Sql="SELECT * FROM $tbname ;";//
 
   }
 $jsonTransactions = json_encode($transactions);
-$fetchSql="SELECT apiKey FROM API WHERE id=1";
+$fetchSql="SELECT apiKey FROM API WHERE id=1";//fetch api key from database to eliminate exposure
 $fetchQuery=mysqli_query($conn,$fetchSql);
 $apiKey=mysqli_fetch_array($fetchQuery);
 
