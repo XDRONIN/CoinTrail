@@ -59,3 +59,16 @@ a:hover {
   color: white;
   cursor: pointer;
 }
+.tranRow {
+  display: block;
+  text-align: center;
+  font-size: 25px;
+  font-weight: 500;
+  margin: 2px;
+  padding: 5px;
+}
+.tranHead {
+  font-weight: 900;
+  font-size: 35px;
+  color: #24977b;
+}
