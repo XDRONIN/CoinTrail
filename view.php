@@ -3,6 +3,8 @@ session_start();
 include("connect.php");
 $tbname=$_SESSION['tbname'];
 $name=$_SESSION['name'];
+$tranSql="SELECT COD,amount,DOT,catogory,scatogory FROM $tbname ORDER BY id DESC";
+$tranResult = mysqli_query($conn,$tranSql);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,5 +29,46 @@ $name=$_SESSION['name'];
      
       <div class="profile"><?php echo $name?></div>
     </div>  
+    <div class="options">
+    <label for="catogory">Choose a Catogory:</label>
+
+<select name="catogory" id="catogory">
+  <option value="Essentials">Essentials</option>
+  <option value="Bills">Bills</option>
+  <option value="Savings">Savings</option>
+  <option value="Others">Others</option>
+</select>
+    </div>
+    <div class="transactions">
+        <center><h2 class="tranHead">Last Entries:</h2><br></center>
+        <?php 
+        $i==1;
+         while ( $tranRow = mysqli_fetch_array($tranResult)) {
+         
+          if($tranRow[0]=="debit" ){
+            
+          if($tranRow[3]=="Essentials"){
+            echo "<div class='tranRow' style='background-color: #FA5555;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div><br>";
+          }
+          else if($tranRow[3]== "Bills"){
+            echo "<div class='tranRow' style='background-color: #F7FB76;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div><br>";
+          }
+          else if($tranRow[3]== "Savings"){
+            echo "<div class='tranRow' style='background-color: #8DED8E;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div><br>";
+          }
+          else if($tranRow[3]== "Others"){
+            echo "<div class='tranRow' style='background-color: #2D7D8F;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div><br>";
+          }
+          
+
+        }
+          elseif($tranRow[0]=="credit" ){
+            echo "<div class='tranRow' style='background-color: #24977b;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]."</div><br>";}
+            $i++;
+           }
+        
+        
+        ?>
+      </div>
 </body>
 </html>
