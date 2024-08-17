@@ -29,16 +29,38 @@ $tranResult = mysqli_query($conn,$tranSql);
      
       <div class="profile"><?php echo $name?></div>
     </div>  
-    <div class="options">
-    <label for="catogory">Choose a Catogory:</label>
-
-<select name="catogory" id="catogory">
-  <option value="Essentials">Essentials</option>
-  <option value="Bills">Bills</option>
-  <option value="Savings">Savings</option>
-  <option value="Others">Others</option>
-</select>
-    </div>
+    <div class="all-options box">
+                <div class="option">
+                    <input  value="All" name="catogory" type="radio" class="input" />
+                        <div class="btn all">
+                    <span class="span">All</span>
+                         </div>
+                </div>
+                <div class="option">
+                    <input  value="Essentials" name="catogory" type="radio" class="input" />
+                        <div class="btn es">
+                    <span class="span">Essentials</span>
+                         </div>
+                </div>
+                <div class="option">
+                    <input  value="Bills" name="catogory" type="radio" class="input" />
+                        <div class="btn bi">
+                    <span class="span">Bills</span>
+                         </div>
+                </div>
+                <div class="option">
+                    <input  value="Savings" name="catogory" type="radio" class="input" />
+                        <div class="btn sa">
+                    <span class="span">Savings</span>
+                         </div>
+                </div>
+                <div class="option">
+                    <input  value="Others" name="catogory" type="radio" class="input" />
+                        <div class="btn ot">
+                    <span class="span">Others</span>
+                         </div>
+                </div>
+</div>
     <div class="transactions">
         <center><h2 class="tranHead">Entries:</h2><br></center>
         <?php 
