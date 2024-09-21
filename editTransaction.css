@@ -63,3 +63,63 @@ a:hover {
   color: white;
   cursor: pointer;
 }
+.container {
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  font-size: 20px;
+  min-width: 500px;
+  max-width: fit-content;
+  background: #00ffa0;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 0.5vmin solid #05060f;
+  box-shadow: 0.4rem 0.4rem #05060f;
+  align-items: center;
+  justify-content: center;
+  align-items: center;
+
+  color: black;
+  min-height: 500px;
+  max-height: 600px;
+  margin: 10px;
+  overflow-y: auto;
+}
+.card::-webkit-scrollbar {
+  display: none;
+}
+.input {
+  display: flex;
+  width: 350px;
+  height: 56px;
+  border-radius: 7px;
+  border: 3px solid #323232;
+  background-color: #fff;
+  box-shadow: 6px 6px #323232;
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--font-color);
+  padding: 7px 14px;
+  outline: none;
+  margin: 5px;
+  margin-bottom: 10px;
+}
+.btn {
+  width: 168px;
+  height: 56px;
+  border-radius: 7px;
+  border: 3px solid #323232;
+  background-color: #fff;
+  box-shadow: 6px 6px #323232;
+  font-size: 24px;
+  font-weight: 600;
+  color: #24977b;
+  cursor: pointer;
+}
