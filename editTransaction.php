@@ -40,6 +40,7 @@ $name=$_SESSION['name'];?>
     <div class="card">
       <center><h2>Credit</h2></center>
     <form method="post" action="updateTransaction.php" >
+    <input type="text" value="<?php echo $id?>" style="display: none;" name="id"><!-- Sends the id of the transaction to updateTransaction.php-->
     <b>Amount:</b><input type="number" name='amount' value='<?php echo $result[2]?>' class="input"><br>
    <b> Date:</b> &nbsp; &nbsp;   &nbsp;  <input type="date" name='date' value='<?php echo $result[5]?>' class="input"><br>
    <center> <input class="btn" type="submit"></center>
@@ -54,6 +55,7 @@ $name=$_SESSION['name'];?>
     <div class="card" style="padding: 50px;">
       <center><h2>Debit</h2></center>
     <form method="post" action="updateTransaction.php" >
+    <input type="text" value="<?php echo $id?>" style="display: none;" name="id"><!-- Sends the id of the transaction to updateTransaction.php-->
     <b>Amount:</b><input type="number" name='amount' value='<?php echo $result[2]?>' class="input"><br>
     <b>Catogory:</b><input type="text" name='catogory' value='<?php echo $result[3]?>' class="input"><br>
     <b>Sub-Catogory:</b><input type="text" name='scatogory' value='<?php echo $result[4]?>' class="input"><br>
