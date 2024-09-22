@@ -16,7 +16,7 @@ $Sql="SELECT * FROM $tbname ;";//
 
   }
 $jsonTransactions = json_encode($transactions);
-$fetchSql="SELECT apiKey FROM API WHERE id=1";
+$fetchSql="SELECT apiKey FROM API WHERE id=1";//fetch api key from database to eliminate exposure
 $fetchQuery=mysqli_query($conn,$fetchSql);
 $apiKey=mysqli_fetch_array($fetchQuery);
 
@@ -47,8 +47,10 @@ $apiKey=mysqli_fetch_array($fetchQuery);
      <div class="navbar">
         <a href="dashboard.php">Home</a>
       <h2 class="logo">Coin<span class="span1">Trail</span></h2>
+     
       <div class="profile"><?php echo $name?></div>
     </div>
+   <img src="AI.png" style="margin-top: 5px; margin-left:15px;">
    <div class="spinner">
   <div></div>
   <div></div>
@@ -109,8 +111,10 @@ const chat = model.startChat({
     {
       role: "user",
       parts: [{ text: `${transactions} Is a 2d array which contains my complete Transaction history.Each element of the array holds details of a particular transaction.
-       "credit"= Money i got, "debit"= Money i spend , There are also 4 main catogories where i spend my money -"essentials","bills","savings","other". Then there is subcatogories such as
-        clothes,food,petrol,etc that specifies on what i spend my money on. I want You to go through the data and answer my questions like a money management expert ` }],
+       "credit"= Money i got,Income etc.
+        "debit"= Money i spend, There are also 4 main catogories where i spend my money -"essentials","bills","savings","other". Then there is subcatogories such as
+        clothes,food,petrol,etc that specifies on what i spend my money on. I want You to go through the data and answer my questions like a money management expert
+        [ ALWAYS GIVE ANSWERS BASED ON THE DATA ]--IMPORTANT` }],
     },
     {
       role: "model",

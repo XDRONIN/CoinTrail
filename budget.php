@@ -36,6 +36,7 @@ $query=mysqli_query($conn,$sql);
  <link rel="stylesheet" href="budget.css">
 <body>
 <div class="navbar">
+<a href="dashboard.php">Home</a>
 <h2 class="logo">Coin<span class="span1">Trail</span></h2>
       <div class="profile"><?php echo $name?></div>
 </div><div class="bud-details">

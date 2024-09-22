@@ -141,9 +141,10 @@ if (isset($_SESSION["email"])){//getting the email from session
       <div class="profile"  ><?php echo $name[0]?></div>
     </div>
     <div class="sidebar">
-      <div class="page"><a href="http://localhost/MiniProject/transactions.php"> Transactions</a></div>
-      <div class="page"><a href="ai.php">Ai Assistance</a></div>
-      <div class="page"><a href="budget.php">Budget</a></div>
+      <div class="page"><a href="http://localhost/MiniProject/transactions.php"> Enter Transactions</a></div>
+      <div class="page"><a href="view.php">View Transactions</a></div>
+      <div class="page"><a href="budget.php">Add Budget</a></div>
+      <div class="page"><a href="ai.php">Ai Assistant</a></div>
     </div>
     <div class="balance">
       <img src="wallet.png" height="46px" width="46px">  &nbsp;
