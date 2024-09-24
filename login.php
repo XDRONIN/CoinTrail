@@ -41,7 +41,7 @@
                      <form class="flip-card__form" action="signUp.php" method="POST">
                         <input class="flip-card__input" placeholder="Name" type="name" name="name">
                         <input class="flip-card__input"  placeholder="Email" type="email" name="email">
-                        <input class="flip-card__input"  placeholder="Password"  name="psswrd">
+                        <input class="flip-card__input"  placeholder="Password"  type="password" name="psswrd">
                         <button class="flip-card__btn">Confirm!</button>
                      </form>
                   </div>
