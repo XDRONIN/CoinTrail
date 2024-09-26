@@ -245,3 +245,7 @@ body {
   color: var(--font-color);
   cursor: pointer;
 }
+.eye {
+  height: 25px;
+  width: 30px;
+}

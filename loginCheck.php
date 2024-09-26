@@ -7,7 +7,9 @@ include"connect.php";
     $result=mysqli_query($conn,$sql);
     if(mysqli_num_rows($result)> 0){
         $row=mysqli_fetch_assoc($result);
-        if($psswrd==$row["psswrd"]){
+        $db_psswrd=$row["psswrd"];
+        
+        if(password_verify($psswrd,$db_psswrd)){
 
             $_SESSION["email"]=$email;//stores email in session superglobal array for dashboard to access
             header("Location:http://localhost/MiniProject/dashboard.php");
@@ -16,6 +18,7 @@ include"connect.php";
         else{
 
             echo "<script>alert('wrong password');</script>";
+            
          
 
         }

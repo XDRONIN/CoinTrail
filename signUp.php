@@ -14,7 +14,8 @@ include"connect.php";
 $name=$_POST["name"];
 $email=$_POST["email"];
 $psswrd=$_POST["psswrd"];
-$sql="INSERT into users (name,email,psswrd) values ('$name','$email','$psswrd')";
+$hash_psswrd=password_hash($psswrd,PASSWORD_DEFAULT);
+$sql="INSERT into users (name,email,psswrd) values ('$name','$email','$hash_psswrd')";
 
 $qry=mysqli_query($conn, $sql);
 
