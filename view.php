@@ -65,6 +65,7 @@ $tranResult = mysqli_query($conn,$tranSql);
                          </div>
                 </div>
 </div>
+<div class="but-container"><button onclick =" window.location.href='report.php'" class="add">View Report</button></div>
 <center><h2 class="tranHead">Entries:</h2><br></center>
     <div class="transactions" id="trans">
         
