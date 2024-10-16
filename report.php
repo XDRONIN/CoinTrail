@@ -3,12 +3,20 @@ session_start();
 include("connect.php");
 $tbname=$_SESSION['tbname'];
 $name=$_SESSION['name'];
-$janQuery="SELECT amount,catogory FROM $tbname WHERE MONTH(DOT) = 10 AND YEAR(DOT) = 2024";
+$janQuery="SELECT catogory, SUM(amount) AS total_amount FROM $tbname WHERE YEAR(DOT) = 2024 AND MONTH(DOT) = 10 GROUP BY catogory;";
 $janSql=mysqli_query($conn,$janQuery);
 $janRow=mysqli_fetch_array($janSql);
 $i=1;
 $janArray=array();
-
+for ($i=0; $i <4; $i++) { 
+  $janRow=mysqli_fetch_array($janSql);
+  $janArray[$i]=$janRow[1];
+ // echo $janArray[$i];
+}
+echo '<script>
+    var jsArray = ' . json_encode($janArray) . ';
+    console.log(jsArray); // You can verify it in the browser console
+</script>';
 
 
 
