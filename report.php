@@ -3,19 +3,25 @@ session_start();
 include("connect.php");
 $tbname=$_SESSION['tbname'];
 $name=$_SESSION['name'];
-$janQuery="SELECT catogory, SUM(amount) AS total_amount FROM $tbname WHERE YEAR(DOT) = 2024 AND MONTH(DOT) = 10 GROUP BY catogory;";
-$janSql=mysqli_query($conn,$janQuery);
-$janRow=mysqli_fetch_array($janSql);
-$i=1;
+
 $janArray=array();
-for ($i=0; $i <4; $i++) { 
-  $janRow=mysqli_fetch_array($janSql);
-  $janArray[$i]=$janRow[1];
- // echo $janArray[$i];
+for ($j=1; $j <=12 ; $j++) { 
+  $janQuery="SELECT catogory, SUM(amount) AS total_amount FROM $tbname WHERE YEAR(DOT) = 2024 AND MONTH(DOT) = $j AND COD='debit' GROUP BY catogory;";
+  $janSql=mysqli_query($conn,$janQuery);
+  
+  
+  for ($i=0; $i <4; $i++) { 
+    $janRow=mysqli_fetch_array($janSql);
+    $janArray[$j][$i]=$janRow[1];
+   // echo $janArray[$i];
+  }
+  
 }
 echo '<script>
-    var jsArray = ' . json_encode($janArray) . ';
-    console.log(jsArray); // You can verify it in the browser console
+    let jsArray = ' . json_encode($janArray) . ';
+   
+
+    
 </script>';
 
 
@@ -29,36 +35,40 @@ echo '<script>
     <title>EDIT TRANSACTIONS</title>
 </head>
 
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
+          
+    
       google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
-
+      
       function drawChart() {
         var data = google.visualization.arrayToDataTable([
         ['Catogory', 'Essentials', 'Bills', 'Savings', 'Others',
           { role: 'annotation' } ],
-        ['Jan', 10, 24, 20, 32, ''],
-        ['Feb', 10, 24, 20, 32, ''],
-        ['Mar', 10, 24, 20, 32, ''],
-        ['Apr', 10, 24, 20, 32, ''],
-        ['May', 10, 24, 20, 32, ''],
-        ['Jun', 10, 24, 20, 32, ''],
-        ['Jul', 10, 24, 20, 32, ''],
-        ['Aug', 10, 24, 20, 32, ''],
-        ['Sep', 10, 24, 20, 32, ''],
-        ['Oct', 10, 24, 20, 32, ''],
-        ['Nov', 10, 24, 20, 32, ''],
-        ['Dec', 10, 24, 20, 32, ''],
+        ['Jan', ...jsArray[1], ''],
+        ['Feb', ...jsArray[2], ''],
+        ['Mar', ...jsArray[3], ''],
+        ['Apr', ...jsArray[4], ''],
+        ['May', ...jsArray[5], ''],
+        ['Jun', ...jsArray[6], ''],
+        ['Jul', ...jsArray[7], ''],
+        ['Aug', ...jsArray[8], ''],
+        ['Sep', ...jsArray[9], ''],
+        ['Oct', ...jsArray[10], ''],
+        ['Nov', ...jsArray[11], ''],
+        ['Dec', ...jsArray[12], ''],
         
       ]);
 
       var options = {
-        width: 600,
-        height: 400,
+        width: 1000,
+        height: 665,
         legend: { position: 'top', maxLines: 3 },
         bar: { groupWidth: '75%' },
-        isStacked: true
+        isStacked: true,
+        
       };
 
         var chart = new google.charts.Bar(document.getElementById('barchart_material'));
