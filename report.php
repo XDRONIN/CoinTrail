@@ -6,20 +6,20 @@ $name=$_SESSION['name'];
 
 $janArray=array();
 for ($j=1; $j <=12 ; $j++) { 
-  $janQuery="SELECT catogory, SUM(amount) AS total_amount FROM $tbname WHERE YEAR(DOT) = 2024 AND MONTH(DOT) = $j AND COD='debit' GROUP BY catogory;";
+  $janQuery="SELECT catogory, SUM(amount) AS total_amount FROM $tbname WHERE YEAR(DOT) = 2024 AND MONTH(DOT) = $j AND COD='debit' ";
   $janSql=mysqli_query($conn,$janQuery);
   
   
-  for ($i=0; $i <4; $i++) { 
+  
     $janRow=mysqli_fetch_array($janSql);
-    $janArray[$j][$i]=$janRow[1];
+    $janArray[$j]=$janRow[1];
    // echo $janArray[$i];
-  }
+  
   
 }
 echo '<script>
     let jsArray = ' . json_encode($janArray) . ';
-   
+    
 
     
 </script>';
@@ -36,56 +36,49 @@ echo '<script>
 </head>
 
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
     <script type="text/javascript">
-          
+      google.charts.load("current", { packages: ["bar"] });
+      google.charts.setOnLoadCallback(drawStuff);
 
-// Iterate through the object
-      for (let key in jsArray) {
-  // Check if the property is indeed an array
-      if (Array.isArray(jsArray[key])) {
-    // Iterate through the array and replace null with 0
-      jsArray[key] = jsArray[key].map(item => item === null ? 0 : item);
-  }
-}
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ["Expenses", "Debit"],
+          ["Jan", Number(jsArray[1])],
+          ["Feb", jsArray[2]],
+          ["Mar", jsArray[3]],
+          ["Apr", jsArray[4]],
+          ["May", jsArray[5]],
+          ["Jun", jsArray[6]],
+          ["Jul", jsArray[7]],
+          ["Aug", jsArray[8]],
+          ["Sep", jsArray[9]],
+          ["Oct", jsArray[10]],
+          ["Nov", jsArray[11]],
+          ["Dec", jsArray[12]],
+        ]);
 
-console.log(jsArray);
-          
-    
-      google.charts.load('current', {'packages':['bar']});
-      google.charts.setOnLoadCallback(drawChart);
-      
-      function drawChart() {
-        var data = google.visualization.arrayToDataTable([
-        ['Catogory', 'Essentials', 'Bills', 'Savings', 'Others',
-          { role: 'annotation' } ],
-        ['Jan', ...jsArray[1], ''],
-        ['Feb', ...jsArray[2], ''],
-        ['Mar', ...jsArray[3], ''],
-        ['Apr', ...jsArray[4], ''],
-        ['May', ...jsArray[5], ''],
-        ['Jun', ...jsArray[6], ''],
-        ['Jul', ...jsArray[7], ''],
-        ['Aug', ...jsArray[8], ''],
-        ['Sep', ...jsArray[9], ''],
-        ['Oct', ...jsArray[10], ''],
-        ['Nov', ...jsArray[11], ''],
-        ['Dec', ...jsArray[12], ''],
-        
-      ]);
+        var options = {
+          title: "Expenses of Each Month",
+          width: 900,
+          legend: { position: "none" },
+          chart: {
+            title: " Expenses of Each Month",
+          },
+          bars: "vertical", // Required for Material Bar Charts.
+          axes: {
+            y: {
+              0: { side: "top", label: "Amount Spend $" }, // Top x-axis.
+            },
+          },
+          bar: { groupWidth: "90%" },
+        };
 
-      var options = {
-        width: 1000,
-        height: 665,
-        legend: { position: 'top', maxLines: 3 },
-        bar: { groupWidth: '75%' },
-        isStacked: true,
-        
-      };
-
-        var chart = new google.charts.Bar(document.getElementById('barchart_material'));
-
-        chart.draw(data, google.charts.Bar.convertOptions(options));
+        var chart = new google.charts.Bar(document.getElementById("top_x_div"));
+        chart.draw(data, options);
       }
     </script>
   
@@ -141,6 +134,6 @@ console.log(jsArray);
 </div>
 <center><h2>Detailed Reports</h2></center>
     <!---The Pie Chart Script-->
- <div id="barchart_material" style="width: 900px; height: 500px;"></div>
+    <div id="top_x_div" style="width: 900px; height: 500px"></div>
 </body>
 </html>
