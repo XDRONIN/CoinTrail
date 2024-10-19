@@ -39,6 +39,18 @@ echo '<script>
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript">
           
+
+// Iterate through the object
+      for (let key in jsArray) {
+  // Check if the property is indeed an array
+      if (Array.isArray(jsArray[key])) {
+    // Iterate through the array and replace null with 0
+      jsArray[key] = jsArray[key].map(item => item === null ? 0 : item);
+  }
+}
+
+console.log(jsArray);
+          
     
       google.charts.load('current', {'packages':['bar']});
       google.charts.setOnLoadCallback(drawChart);
