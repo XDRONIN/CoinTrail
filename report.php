@@ -4,27 +4,8 @@ include("connect.php");
 $tbname=$_SESSION['tbname'];
 $name=$_SESSION['name'];
 
+
 $janArray=array();
-for ($j=1; $j <=12 ; $j++) { 
-  $janQuery="SELECT catogory, SUM(amount) AS total_amount FROM $tbname WHERE YEAR(DOT) = 2024 AND MONTH(DOT) = $j AND COD='debit' ";
-  $janSql=mysqli_query($conn,$janQuery);
-  
-  
-  
-    $janRow=mysqli_fetch_array($janSql);
-    $janArray[$j]=$janRow[1];
-   // echo $janArray[$i];
-  
-  
-}
-echo '<script>
-    let jsArray = ' . json_encode($janArray) . ';
-    
-
-    
-</script>';
-
-
 
 ?>
 <!DOCTYPE html>
@@ -36,51 +17,6 @@ echo '<script>
 </head>
 
 
-<script
-      type="text/javascript"
-      src="https://www.gstatic.com/charts/loader.js"
-    ></script>
-    <script type="text/javascript">
-      google.charts.load("current", { packages: ["bar"] });
-      google.charts.setOnLoadCallback(drawStuff);
-
-      function drawStuff() {
-        var data = new google.visualization.arrayToDataTable([
-          ["Expenses", "Debit"],
-          ["Jan", Number(jsArray[1])],
-          ["Feb", jsArray[2]],
-          ["Mar", jsArray[3]],
-          ["Apr", jsArray[4]],
-          ["May", jsArray[5]],
-          ["Jun", jsArray[6]],
-          ["Jul", jsArray[7]],
-          ["Aug", jsArray[8]],
-          ["Sep", jsArray[9]],
-          ["Oct", jsArray[10]],
-          ["Nov", jsArray[11]],
-          ["Dec", jsArray[12]],
-        ]);
-
-        var options = {
-          title: "Expenses of Each Month",
-          width: 900,
-          legend: { position: "none" },
-          chart: {
-            title: " Expenses of Each Month",
-          },
-          bars: "vertical", // Required for Material Bar Charts.
-          axes: {
-            y: {
-              0: { side: "top", label: "Amount Spend $" }, // Top x-axis.
-            },
-          },
-          bar: { groupWidth: "90%" },
-        };
-
-        var chart = new google.charts.Bar(document.getElementById("top_x_div"));
-        chart.draw(data, options);
-      }
-    </script>
   
 <link
       href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700&display=swap"
@@ -132,8 +68,86 @@ echo '<script>
                </div>
       </div>
 </div>
+<script>
+</script>
+<script
+      type="text/javascript"
+      src="https://www.gstatic.com/charts/loader.js"
+    ></script>
+    <script type="text/javascript">
+        const all=document.getElementById('all');
+  const ess=document.getElementById('ess');
+  const bill=document.getElementById('bill');
+  const sav=document.getElementById('sav');
+  const oth=document.getElementById('oth');
+  function setReport(){
+    if(all.checked){
+<?php 
+
+for ($j=1; $j <=12 ; $j++) { 
+  $janQuery="SELECT catogory, SUM(amount) AS total_amount FROM $tbname WHERE YEAR(DOT) = 2024 AND MONTH(DOT) = $j AND COD='debit' ";
+  $janSql=mysqli_query($conn,$janQuery);
+  
+  
+  
+    $janRow=mysqli_fetch_array($janSql);
+    $janArray[$j]=$janRow[1];
+   // echo $janArray[$i];
+  
+  
+}
+
+
+?>
+let jsArray = <?php echo json_encode($janArray) ?>;
+console.log(jsArray);
+google.charts.load("current", { packages: ["bar"] });
+      google.charts.setOnLoadCallback(drawStuff);
+
+      function drawStuff() {
+        var data = new google.visualization.arrayToDataTable([
+          ["Expenses", "Debit"],
+          ["Jan", Number(jsArray[1])],
+          ["Feb", jsArray[2]],
+          ["Mar", jsArray[3]],
+          ["Apr", jsArray[4]],
+          ["May", jsArray[5]],
+          ["Jun", jsArray[6]],
+          ["Jul", jsArray[7]],
+          ["Aug", jsArray[8]],
+          ["Sep", jsArray[9]],
+          ["Oct", jsArray[10]],
+          ["Nov", jsArray[11]],
+          ["Dec", jsArray[12]],
+        ]);
+
+        var options = {
+          title: "Expenses of Each Month",
+          width: 900,
+          legend: { position: "none" },
+          chart: {
+            title: " Expenses of Each Month",
+          },
+          bars: "vertical", // Required for Material Bar Charts.
+          axes: {
+            y: {
+              0: { side: "top", label: "Amount Spend $" }, // Top x-axis.
+            },
+          },
+          bar: { groupWidth: "90%" },
+        };
+
+        var chart = new google.charts.Bar(document.getElementById("top_x_div"));
+        chart.draw(data, options);
+      }
+
+}}
+setReport();
+
+    </script>
+
 <center><h2>Detailed Reports</h2></center>
     <!---The Pie Chart Script-->
-    <div id="top_x_div" style="width: 900px; height: 500px"></div>
+   <center> <div id="top_x_div" style="width: 1900px; height: 700px"></div><center>
 </body>
 </html>
