@@ -74,78 +74,135 @@ $janArray=array();
       type="text/javascript"
       src="https://www.gstatic.com/charts/loader.js"
     ></script>
-    <script type="text/javascript">
-        const all=document.getElementById('all');
-  const ess=document.getElementById('ess');
-  const bill=document.getElementById('bill');
-  const sav=document.getElementById('sav');
-  const oth=document.getElementById('oth');
-  function setReport(){
-    if(all.checked){
-<?php 
+    <?php
+// First calculate all the different arrays we might need
+$allArray = array();
+$essArray = array();
+$billArray = array();
+$savArray = array();
+$othArray = array();
 
-for ($j=1; $j <=12 ; $j++) { 
-  $janQuery="SELECT catogory, SUM(amount) AS total_amount FROM $tbname WHERE YEAR(DOT) = 2024 AND MONTH(DOT) = $j AND COD='debit' ";
-  $janSql=mysqli_query($conn,$janQuery);
-  
-  
-  
-    $janRow=mysqli_fetch_array($janSql);
-    $janArray[$j]=$janRow[1];
-   // echo $janArray[$i];
-  
-  
+for ($j=1; $j <= 12; $j++) {
+    // All categories
+    $query = "SELECT SUM(amount) AS total_amount FROM $tbname 
+              WHERE YEAR(DOT) = 2024 AND MONTH(DOT) = $j AND COD='debit'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($result);
+    $allArray[$j] = $row['total_amount'] ?? 0;
+    
+    // Essentials
+    $query = "SELECT SUM(amount) AS total_amount FROM $tbname 
+              WHERE YEAR(DOT) = 2024 AND MONTH(DOT) = $j AND COD='debit' 
+              AND catogory='Essentials'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($result);
+    $essArray[$j] = $row['total_amount'] ?? 0;
+    
+    // Bills
+    $query = "SELECT SUM(amount) AS total_amount FROM $tbname 
+              WHERE YEAR(DOT) = 2024 AND MONTH(DOT) = $j AND COD='debit' 
+              AND catogory='Bills'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($result);
+    $billArray[$j] = $row['total_amount'] ?? 0;
+    
+    // Savings
+    $query = "SELECT SUM(amount) AS total_amount FROM $tbname 
+              WHERE YEAR(DOT) = 2024 AND MONTH(DOT) = $j AND COD='debit' 
+              AND catogory='Savings'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($result);
+    $savArray[$j] = $row['total_amount'] ?? 0;
+    
+    // Others
+    $query = "SELECT SUM(amount) AS total_amount FROM $tbname 
+              WHERE YEAR(DOT) = 2024 AND MONTH(DOT) = $j AND COD='debit' 
+              AND catogory='Others'";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_array($result);
+    $othArray[$j] = $row['total_amount'] ?? 0;
 }
-
-
 ?>
-let jsArray = <?php echo json_encode($janArray) ?>;
-console.log(jsArray);
-google.charts.load("current", { packages: ["bar"] });
-      google.charts.setOnLoadCallback(drawStuff);
 
-      function drawStuff() {
+<script type="text/javascript">
+const all = document.getElementById('all');
+const ess = document.getElementById('ess');
+const bill = document.getElementById('bill');
+const sav = document.getElementById('sav');
+const oth = document.getElementById('oth');
+
+// Store all the PHP arrays as JavaScript variables
+const allData = <?php echo json_encode($allArray); ?>;
+const essData = <?php echo json_encode($essArray); ?>;
+const billData = <?php echo json_encode($billArray); ?>;
+const savData = <?php echo json_encode($savArray); ?>;
+const othData = <?php echo json_encode($othArray); ?>;
+
+function setReport() {
+    let currentData;
+    
+    if (all.checked) {
+        currentData = allData;
+    } else if (ess.checked) {
+        currentData = essData;
+    } else if (bill.checked) {
+        currentData = billData;
+    } else if (sav.checked) {
+        currentData = savData;
+    } else if (oth.checked) {
+        currentData = othData;
+    }
+    
+    google.charts.load("current", { packages: ["bar"] });
+    google.charts.setOnLoadCallback(drawStuff);
+
+    function drawStuff() {
         var data = new google.visualization.arrayToDataTable([
-          ["Expenses", "Debit"],
-          ["Jan", Number(jsArray[1])],
-          ["Feb", jsArray[2]],
-          ["Mar", jsArray[3]],
-          ["Apr", jsArray[4]],
-          ["May", jsArray[5]],
-          ["Jun", jsArray[6]],
-          ["Jul", jsArray[7]],
-          ["Aug", jsArray[8]],
-          ["Sep", jsArray[9]],
-          ["Oct", jsArray[10]],
-          ["Nov", jsArray[11]],
-          ["Dec", jsArray[12]],
+            ["Expenses", "Debit"],
+            ["Jan", Number(currentData[1])],
+            ["Feb", Number(currentData[2])],
+            ["Mar", Number(currentData[3])],
+            ["Apr", Number(currentData[4])],
+            ["May", Number(currentData[5])],
+            ["Jun", Number(currentData[6])],
+            ["Jul", Number(currentData[7])],
+            ["Aug", Number(currentData[8])],
+            ["Sep", Number(currentData[9])],
+            ["Oct", Number(currentData[10])],
+            ["Nov", Number(currentData[11])],
+            ["Dec", Number(currentData[12])],
         ]);
 
         var options = {
-          title: "Expenses of Each Month",
-          width: 900,
-          legend: { position: "none" },
-          chart: {
-            title: " Expenses of Each Month",
-          },
-          bars: "vertical", // Required for Material Bar Charts.
-          axes: {
-            y: {
-              0: { side: "top", label: "Amount Spend $" }, // Top x-axis.
+            title: "Expenses of Each Month",
+            width: 900,
+            legend: { position: "none" },
+            chart: {
+                title: "Expenses of Each Month",
             },
-          },
-          bar: { groupWidth: "90%" },
+            bars: "vertical",
+            axes: {
+                y: {
+                    0: { side: "top", label: "Amount Spent $" },
+                },
+            },
+            bar: { groupWidth: "90%" },
         };
 
         var chart = new google.charts.Bar(document.getElementById("top_x_div"));
         chart.draw(data, options);
-      }
+    }
+}
 
-}}
+// Initial load
 setReport();
 
-    </script>
-
+// Add event listeners
+const inputs = document.querySelectorAll('.input');
+inputs.forEach(input => {
+    input.addEventListener('click', setReport);
+});
+</script>
 <center><h2>Detailed Reports</h2></center>
     <!---The Pie Chart Script-->
    <center> <div id="top_x_div" style="width: 1900px; height: 700px"></div><center>
