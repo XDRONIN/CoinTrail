@@ -76,7 +76,7 @@ a:hover {
   border: 0.5vmin solid #05060f;
   box-shadow: 0.4rem 0.4rem #05060f;
   align-items: center;
-
+  align-items: center;
   color: black;
   min-height: 200px;
   max-height: fit-content;

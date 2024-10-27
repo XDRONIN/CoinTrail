@@ -87,7 +87,7 @@ foreach ($users as $tbname) {
  
 <body>
 <div class="navbar">
-        <a href="dashboard.php">Home</a>
+        
       <h2 class="logo">Coin<span class="span1">Trail</span></h2>
      
       <div class="profile">Admin</div>
@@ -120,7 +120,44 @@ foreach ($users as $tbname) {
                 dataDiv.innerText = `${key.charAt(0).toUpperCase() + key.slice(1)}: ${value}`;
                 userDiv.appendChild(dataDiv);
             }
+            // Create a form for the user
+            const form = document.createElement('form');
+            //form.action = 'viewUserChart.php'; // Target page
+            form.method = 'POST';
 
+            // Add hidden input fields to pass user data
+            for (const [key, value] of Object.entries(data)) {
+                const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = key; // Field name (e.g., credit, debit)
+                input.value = value; // Field value
+                form.appendChild(input);
+            }
+            const input = document.createElement('input');
+                input.type = 'hidden';
+                input.name = 'user'; // user
+                input.value = user; //user value
+                form.appendChild(input);
+            // Create a button to submit the form
+            var button1 = document.createElement('button');
+            button1.type = 'button'; // Set to button type
+            button1.innerText = 'View Chart';
+            button1.onclick = function() {
+             form.action = 'viewUserChart.php'; // Set the action for this button
+             form.submit(); // Submit the form
+             };
+            form.appendChild(button1);
+            var button2 = document.createElement('button');
+            button2.type = 'button'; // Set to button type
+            button2.innerText = 'All Transactions';
+            button2.onclick = function() {
+                form.action = 'viewUserTransaction.php'; // Set the action for this button
+                form.submit(); // Submit the form
+            };
+            form.appendChild(button2);
+
+            // Append the form to the userDiv
+            userDiv.appendChild(form);
             // Append userDiv to the main container
             container.appendChild(userDiv);
         }
