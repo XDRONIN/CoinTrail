@@ -1,6 +1,3 @@
-Here's the README in GitHub repository style without the "Getting Started" section:
-
----
 
 # CoinTrail 💰
 
