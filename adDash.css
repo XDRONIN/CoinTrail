@@ -63,3 +63,26 @@ a:hover {
   color: white;
   cursor: pointer;
 }
+.user-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  font-size: 20px;
+  min-width: 190px;
+  max-width: fit-content;
+  background: #00ffa0;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 0.5vmin solid #05060f;
+  box-shadow: 0.4rem 0.4rem #05060f;
+  align-items: center;
+
+  color: black;
+  min-height: 200px;
+  max-height: fit-content;
+  margin: 10px;
+}
+#user-data-container {
+  display: flex;
+  flex-direction: row;
+}
