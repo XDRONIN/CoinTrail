@@ -3,7 +3,7 @@ session_start();
 include("connect.php");
 $tbname=$_SESSION['tbname'];
 $name=$_SESSION['name'];
-$usrid=$_SESSION['user_id'];
+//$usrid=$_SESSION['user_id'];
 //echo $usrid;
 ?>
 <!DOCTYPE html>
@@ -52,6 +52,32 @@ $usrid=$_SESSION['user_id'];
         </span>
       </button>
     </div>
+    <div id="popup" class="popup">
+    <div class="popup-content">
+        <span class="close">&times;</span>
+        <center><form method="POST" action="sendRequest.php">
+          <h2>Enter The Request</h2>
+          <input name="message" type="text" class="input" required placeholder="Monthly analysis, Yearly Analysis...."><br>
+          <button type="submit" class="btn" >Send!</button>
+        </form><center>
+    </div>
+</div>
     <div class="req-container"></div>
 </body>
+<script>
+  const popup = document.getElementById("popup");
+const addButton = document.querySelector(".addButton");
+const closeButton = document.querySelector(".close");
+addButton.addEventListener("click", () => {
+    popup.style.display = "flex";
+});
+closeButton.addEventListener("click", () => {
+    popup.style.display = "none";
+});
+window.addEventListener("click", (event) => {
+    if (event.target == popup) {
+        popup.style.display = "none";
+    }
+});
+</script>
 </html>
