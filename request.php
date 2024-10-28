@@ -5,6 +5,16 @@ $tbname=$_SESSION['tbname'];
 $name=$_SESSION['name'];
 $usrid=$_SESSION['user_id'];
 //echo $usrid;
+$sql="SELECT status,message FROM Request_table WHERE user_id=$usrid;";
+$query=mysqli_query($conn,$sql);
+$newArr=array();
+$i=0;
+while($result=mysqli_fetch_array($query)){
+  $newArr[$i] = [$result[0], $result[1]];
+  $i++;
+}
+//echo $newArr[1][1];
+$jsonNewArr = json_encode($newArr);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -62,7 +72,7 @@ $usrid=$_SESSION['user_id'];
         </form><center>
     </div>
 </div>
-    <div class="req-container"></div>
+    <div class="req-container" id="req-container"></div>
 </body>
 <script>
   const popup = document.getElementById("popup");
@@ -78,6 +88,21 @@ window.addEventListener("click", (event) => {
     if (event.target == popup) {
         popup.style.display = "none";
     }
+});
+const reqArray = <?php echo $jsonNewArr; ?>;
+//console.log(reqArray);
+const container = document.getElementById("req-container");
+
+reqArray.forEach((item) => {
+    const div = document.createElement("div");
+    div.classList.add("popup-content");
+    div.style.minHeight = "0px";
+    const status = item[0];
+    const message = item[1];
+
+    div.innerHTML = `<strong>Status:</strong> ${status} <br><strong>Message:</strong> ${message}`;
+
+    container.appendChild(div);
 });
 </script>
 </html>

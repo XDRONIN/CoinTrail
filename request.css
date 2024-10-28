@@ -196,3 +196,7 @@ a:hover {
 
   cursor: pointer;
 }
+.req-container {
+  display: flex;
+  flex-direction: row;
+}
