@@ -3,7 +3,7 @@ session_start();
 include("connect.php");
 $tbname=$_SESSION['tbname'];
 $name=$_SESSION['name'];
-//$usrid=$_SESSION['user_id'];
+$usrid=$_SESSION['user_id'];
 //echo $usrid;
 ?>
 <!DOCTYPE html>
