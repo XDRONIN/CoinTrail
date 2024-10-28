@@ -9,6 +9,7 @@ if (isset($_SESSION["email"])){//getting the email from session
    // echo"".$idrow["0"];
     $tbname="user_".$idrow[0];
     $_SESSION["tbname"]=$tbname;
+    $_SESSION["user_id"]=$idrow[0];
    //echo $tbname;
    $credSql="SELECT SUM(amount) FROM $tbname WHERE COD='credit';";//credit amount
    $credResult = mysqli_query($conn,$credSql);
@@ -145,6 +146,7 @@ if (isset($_SESSION["email"])){//getting the email from session
       <div class="page"><a href="view.php">View Transactions</a></div>
       <div class="page"><a href="budget.php">Add Budget</a></div>
       <div class="page"><a href="ai.php">Ai Assistant</a></div>
+      <div class="page"><a href="request.php">Request Analysis</a></div>
       <div style="color:#803f3f;position:absolute; bottom: 90px;;" class="page"><a href="logout.php">Log Out</a></div>
       
     </div>
