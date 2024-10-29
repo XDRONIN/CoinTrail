@@ -1,0 +1,102 @@
+body {
+  padding: 0;
+  margin: 0;
+
+  font-family: "outfit";
+  background-color: #ffffff;
+  overflow: scroll;
+  scrollbar-width: none;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+
+.navbar {
+  display: flex;
+  margin: 0;
+  width: 100%;
+  height: 60px;
+  align-items: center;
+  justify-content: center;
+  background-color: #24977b;
+  padding-bottom: 20px;
+}
+.logo {
+  display: flex;
+
+  color: #000000;
+  font-size: 40px;
+  margin: 0px;
+  margin-block-start: 0px;
+  margin-block-end: 0px;
+
+  margin-left: 43%;
+
+  margin-top: 25px;
+  font-size: 28px;
+  font-weight: bold;
+
+  align-self: center;
+}
+.span1 {
+  color: #ffffff;
+}
+.profile {
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  margin-left: 45%;
+  margin-top: 18px;
+
+  width: 20px;
+  height: 20px;
+  color: #000000;
+}
+a {
+  text-decoration: none;
+  font-size: 20px;
+  color: black;
+  margin-top: 18px;
+  transition: 200ms ease-in-out;
+}
+a:hover {
+  color: white;
+  cursor: pointer;
+}
+#request-container {
+  display: flex;
+  flex-direction: row;
+}
+.request-item {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  font-size: 20px;
+  min-width: 190px;
+  max-width: fit-content;
+  background: #24977b;
+  padding: 1rem;
+  border-radius: 1rem;
+  border: 0.5vmin solid #05060f;
+  box-shadow: 0.4rem 0.4rem #05060f;
+  align-items: center;
+
+  color: black;
+  min-height: 200px;
+  max-height: fit-content;
+  margin: 10px;
+}
+.butt {
+  margin: 10px;
+  width: 120px;
+  height: 60px;
+
+  border-radius: 5px;
+  border: 2px solid #000000;
+  background-color: #00ffa0;
+  box-shadow: 4px 4px #000000;
+  font-size: 17px;
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
+}
