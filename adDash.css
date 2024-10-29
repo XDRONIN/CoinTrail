@@ -53,14 +53,16 @@ body::-webkit-scrollbar {
   color: #000000;
 }
 a {
-  text-decoration: none;
+  text-decoration: underline;
   font-size: 20px;
   color: black;
   margin-top: 18px;
   transition: 200ms ease-in-out;
+  margin-right: 10px;
+  text-underline-offset: 10px;
 }
 a:hover {
-  color: white;
+  color: #24977b;
   cursor: pointer;
 }
 .user-container {
@@ -85,4 +87,18 @@ a:hover {
 #user-data-container {
   display: flex;
   flex-direction: row;
+}
+.add {
+  margin: 10px;
+  width: 120px;
+  height: 60px;
+
+  border-radius: 5px;
+  border: 2px solid #000000;
+  background-color: #00ffa0;
+  box-shadow: 4px 4px #000000;
+  font-size: 17px;
+  font-weight: 600;
+  color: #000;
+  cursor: pointer;
 }

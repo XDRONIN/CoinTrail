@@ -94,9 +94,11 @@ foreach ($users as $tbname) {
      
       
     </div>  
-    <div>
-        <p>User Count : <?php echo $countResult[0];?></p>
+    <div style="display: flex; width:100%; flex-direction:column; align-items:flex-end;">
+        
+        <a href='response.php' >Resolve Requests</a>
     </div>
+    <center><h2>User Count : <?php echo $countResult[0];?></h2></center>
     <div id="user-data-container"></div>
 
 <script>
