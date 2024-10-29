@@ -66,31 +66,10 @@ $apiKey=mysqli_fetch_array($fetchQuery);
       
     </div>  
    <div style="display: flex;"> <img src="AI.png" style="margin-top: 5px; margin-left:15px; width:70px; height:61px;">
-   <div style="width: 100%; display:flex; justify-content:flex-end; align-items:center;"> <button class="butt" id="send-response" >Send this response</button></div>
+   <div style="width: 100%; display:flex; justify-content:flex-end; align-items:center;"> 
+    <form action="sendResponse.php" method="POST" id="form"><button class="butt" id="send-response" >Send this response</button></form></div>
 </div>
-<script>
-  document.getElementById("send-response").addEventListener("click", function() {
-    // Create a new form element
-    const form = document.createElement("form");
-    form.action = "sendResponse.php";  
-    form.method = "post";              
 
-    // Create a hidden input element
-    const hiddenInput = document.createElement("input");
-    hiddenInput.type = "hidden";
-    hiddenInput.name = "response";      
-    hiddenInput.value = newOutput;      
-
-    
-    form.appendChild(hiddenInput);
-
-    
-    document.body.appendChild(form);
-
-    
-    form.submit();
-  });
-</script>
    <div class="spinner">
   <div></div>
   <div></div>
@@ -155,7 +134,7 @@ const chat = model.startChat({
   history: [
     {
       role: "user",
-      parts: [{ text: `${transactions} 
+      parts: [{ text: `
         The input 'transactions' is a 2D array containing financial transaction records with the following structure:
 
         transactions = [
@@ -185,7 +164,7 @@ genButton.addEventListener("click", async () => {
   h2.innerText = ``;
   showLoading();
   prmpt = document.getElementById("prompt").value;
-  prmpt = prmpt + ` ---Requirements:
+  prmpt = prmpt + `Transactions = ${transactions}  ---Requirements:
         1. Base all analysis ONLY on the data provided in the transactions array
         2. Do not make assumptions about transactions outside this dataset
         3. Do not use external data or knowledge for the analysis
@@ -193,7 +172,7 @@ genButton.addEventListener("click", async () => {
         //console.log(prmpt);
   result = await chat.sendMessage(prmpt);
   //console.log(result.response.text());
-  let newOutput=addLineBreaks(result.response.text());
+   newOutput=addLineBreaks(result.response.text());
   //console.log(newOutput)
   hideLoading()
   output.innerText = `${newOutput}`;
@@ -211,8 +190,26 @@ function showLoading() {
 function hideLoading() {
   spinner.style.display = "none";
 }
+const form = document.getElementById("form");
+document.getElementById("send-response").addEventListener("click", function() {
+     const hiddenInput = document.createElement("input");
+     hiddenInput.type = "hidden";
+     hiddenInput.name = "response";      
+     hiddenInput.value = newOutput;      
 
+    
+    form.appendChild(hiddenInput);
+
+    
+     document.body.appendChild(form);
+
+    
+     form.submit();
+    
+    //console.log(newOutput)
+    })
 </script>
 
 </body>
+
 </html>
