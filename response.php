@@ -65,6 +65,7 @@ $json_req_details = json_encode($req_details);
             <form action="makeResponse.php" method="POST">
                 <input type="hidden" name="req_id" value="${request.req_id}">
                 <input type="hidden" name="user_id" value="${request.user_id}">
+                <input type="hidden" name="msg" value="${request.message}">
                 <button type="submit" class="butt">Respond with Ai</button>
             </form>
         `;
