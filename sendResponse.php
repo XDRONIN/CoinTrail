@@ -38,7 +38,7 @@ $newReqId=json_encode($reqId);
       <div class="profile">Admin</div></div>
      <div class="container">
       <form method="POST" action="sendAction.php">
-     <center><textarea id="myTextarea" class="auto-resize-textarea" placeholder="Paste your text here..."></textarea><center>
+     <center><textarea id="myTextarea" class="auto-resize-textarea" placeholder="Paste your text here..." name="message"></textarea><center>
       <input type="hidden" name="reqId" id="reqId">
      <button class="butt" type="submit">Send!</button>
      </form>
