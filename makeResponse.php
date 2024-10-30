@@ -4,6 +4,7 @@ if (isset($_POST['req_id']) && isset($_POST['user_id'])) {
     $req_id = $_POST['req_id'];
     $user_id = $_POST['user_id'];
     $msg = $_POST['msg'];
+    //echo $req_id;
     
     
 } else {
@@ -12,6 +13,7 @@ if (isset($_POST['req_id']) && isset($_POST['user_id'])) {
 //echo $msg;
 // echo $user_id;
 $jsonmsg = json_encode($msg);
+$jsonReqId=json_encode($req_id);
 
 $tbname="user_".$user_id;
 $Sql="SELECT * FROM $tbname ;";
@@ -34,7 +36,8 @@ $apiKey=mysqli_fetch_array($fetchQuery);
 <script>
     
     let msg = <?php echo $jsonmsg;?>;
-   
+    let reqId = <?php echo $jsonReqId;?>;
+   // console.log(reqId);
  let transactions =<?php echo $jsonTransactions?>;
  //console.log(msg);
 
@@ -196,9 +199,15 @@ document.getElementById("send-response").addEventListener("click", function() {
      hiddenInput.type = "hidden";
      hiddenInput.name = "response";      
      hiddenInput.value = newOutput;      
+     const hiddenInput2 = document.createElement("input");
+     hiddenInput2.type = "hidden";
+     hiddenInput2.name = "req_id";      
+     hiddenInput2.value = reqId;  
+         
 
     
     form.appendChild(hiddenInput);
+    form.appendChild(hiddenInput2);
 
     
      document.body.appendChild(form);

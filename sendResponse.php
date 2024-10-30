@@ -3,9 +3,10 @@
 if (isset($_POST['response'])) {
     // Fetch the 'response' value
     $response = $_POST['response'];
-
+    $reqId = $_POST['req_id'];
+    //echo $reqId;
     // Process the response as needed
-   // echo "The response received is: " . htmlspecialchars($response);
+    //echo "The response received is: " . htmlspecialchars($reqId);
 } else {
     echo "No response received.";
 }
