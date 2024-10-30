@@ -1,7 +1,7 @@
 <?php
 session_start();
  include("connect.php");
- $sql = "SELECT user_id,req_id,status,message FROM Request_table;";
+ $sql = "SELECT user_id,req_id,status,message FROM Request_table WHERE status='Pending';";
  $query=mysqli_query($conn,$sql);
  $req_details = array();
 
