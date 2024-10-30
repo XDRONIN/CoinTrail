@@ -40,7 +40,7 @@ $json_req_details = json_encode($req_details);
  
 <body>
 <div class="navbar">
-        
+    <a href="adDash.php">Home</a>
       <h2 class="logo">Coin<span class="span1">Trail</span></h2>
      
       <div class="profile">Admin</div>

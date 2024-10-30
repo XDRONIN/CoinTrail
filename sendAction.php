@@ -23,7 +23,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Check if insertion was successful
     if ($result && $result2) {
-        echo "New record created successfully";
+        header("Location:response.php");
+        exit();
+        //echo "New record created successfully";
     } else {
         echo "Error: " . mysqli_error($conn);
     }
