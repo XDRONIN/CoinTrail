@@ -5,12 +5,12 @@ $tbname=$_SESSION['tbname'];
 $name=$_SESSION['name'];
 $usrid=$_SESSION['user_id'];
 //echo $usrid;
-$sql="SELECT status,message FROM Request_table WHERE user_id=$usrid;";
+$sql="SELECT status,message,req_id FROM Request_table WHERE user_id=$usrid;";
 $query=mysqli_query($conn,$sql);
 $newArr=array();
 $i=0;
 while($result=mysqli_fetch_array($query)){
-  $newArr[$i] = [$result[0], $result[1]];
+  $newArr[$i] = [$result[0], $result[1],$result[2]];
   $i++;
 }
 //echo $newArr[1][1];
@@ -99,8 +99,30 @@ reqArray.forEach((item) => {
     div.style.minHeight = "0px";
     const status = item[0];
     const message = item[1];
+    const req_id=item[2];
 
     div.innerHTML = `<strong>Status:</strong> ${status} <br><strong>Message:</strong> ${message}`;
+     // If status is "Responded", add the hidden form
+     if (status === "Responded") {
+        const form = document.createElement("form");
+        form.action = "seeResponse.php";
+        form.method = "POST";
+
+        const input = document.createElement("input");
+        input.type = "hidden";
+        input.name = "req_id";
+        input.value = req_id;
+       // console.log(input.value);
+
+        const submitButton = document.createElement("button");
+        submitButton.type = "submit";
+        submitButton.textContent = "See Response";
+        submitButton.classList.add('butt');
+
+        form.appendChild(input);
+        form.appendChild(submitButton);
+        div.appendChild(form);
+    }
 
     container.appendChild(div);
 });
