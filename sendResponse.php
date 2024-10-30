@@ -11,6 +11,7 @@ if (isset($_POST['response'])) {
     echo "No response received.";
 }
 $newResponse=json_encode($response);
+$newReqId=json_encode($reqId);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,6 +39,7 @@ $newResponse=json_encode($response);
      <div class="container">
       <form method="POST" action="sendAction.php">
      <center><textarea id="myTextarea" class="auto-resize-textarea" placeholder="Paste your text here..."></textarea><center>
+      <input type="hidden" name="reqId" id="reqId">
      <button class="butt" type="submit">Send!</button>
      </form>
     </div>  
@@ -46,10 +48,13 @@ $newResponse=json_encode($response);
 </body>
 <script>
     const response=<?php echo $newResponse ;?>;
-    console.log(response);
+    const reqId=<?php echo $newReqId;?>;
+    //console.log(response);
   const textarea = document.getElementById('myTextarea');
     textarea.value=response;
-  
+    const inpt = document.getElementById('reqId');
+    inpt.value=reqId;
+   //console.log(inpt.value);
   
   </script>
 </html>
