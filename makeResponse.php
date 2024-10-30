@@ -144,7 +144,7 @@ const chat = model.startChat({
      [2]: Main Category (String)
      [3]: Sub-Category (String)
      [4]: Transaction Date (String)
-        ] ` }],
+        ]  Note that Credit is Money i got or Income` }],
     },
     {
       role: "model",
