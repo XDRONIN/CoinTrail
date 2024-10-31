@@ -110,7 +110,7 @@ foreach ($users as $tbname) {
             // Create a container div for each user
             const userDiv = document.createElement('div');
             userDiv.className = 'user-container';
-
+           
             // Add user ID title
             const userTitle = document.createElement('h3');
             userTitle.innerText = `Data for ${user}`;
@@ -144,6 +144,7 @@ foreach ($users as $tbname) {
             var button1 = document.createElement('button');
             button1.type = 'button'; // Set to button type
             button1.innerText = 'View Chart';
+            button1.classList.add('butt');
             button1.onclick = function() {
              form.action = 'viewUserChart.php'; // Set the action for this button
              form.submit(); // Submit the form
@@ -152,6 +153,7 @@ foreach ($users as $tbname) {
             var button2 = document.createElement('button');
             button2.type = 'button'; // Set to button type
             button2.innerText = 'All Transactions';
+            button2.classList.add('butt2');
             button2.onclick = function() {
                 form.action = 'viewUserTransaction.php'; // Set the action for this button
                 form.submit(); // Submit the form

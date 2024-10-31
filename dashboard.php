@@ -145,7 +145,7 @@ if (isset($_SESSION["email"])){//getting the email from session
       <div class="page"><a href="http://localhost/MiniProject/transactions.php"> Enter Transactions</a></div>
       <div class="page"><a href="view.php">View Transactions</a></div>
       <div class="page"><a href="budget.php">Add Budget</a></div>
-      <div class="page"><a href="ai.php">Ai Assistant</a></div>
+      <!-- <div class="page"><a href="ai.php">Ai Assistant</a></div> -->
       <div class="page"><a href="request.php">Request Analysis</a></div>
       <div style="color:#803f3f;position:absolute; bottom: 90px;;" class="page"><a href="logout.php">Log Out</a></div>
       
