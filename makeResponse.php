@@ -171,7 +171,8 @@ genButton.addEventListener("click", async () => {
         1. Base all analysis ONLY on the data provided in the transactions array
         2. Do not make assumptions about transactions outside this dataset
         3. Do not use external data or knowledge for the analysis
-        4.Always double check every math calculations`;
+        4. Do not return any code or suggession for the data inputted 
+        5.ALWAYS DOUBLE CHECK CALCULATIONS`;
         //console.log(prmpt);
   result = await chat.sendMessage(prmpt);
   //console.log(result.response.text());
