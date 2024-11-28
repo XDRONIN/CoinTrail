@@ -167,12 +167,36 @@ genButton.addEventListener("click", async () => {
   h2.innerText = ``;
   showLoading();
   prmpt = document.getElementById("prompt").value;
-  prmpt = prmpt + `Transactions = ${transactions}  ---Requirements:
-        1. Base all analysis ONLY on the data provided in the transactions array
-        2. Do not make assumptions about transactions outside this dataset
-        3. Do not use external data or knowledge for the analysis
-        4. Do not return any code or suggession for the data inputted 
-        5.ALWAYS DOUBLE CHECK CALCULATIONS`;
+  prmpt = prmpt + ` INPUT: Transactions = ${transactions}
+
+STRICT RULES:
+
+DATA USAGE
+
+Use ONLY the provided transactions
+NO external information allowed
+ANALYSIS CONSTRAINTS
+
+NO assumptions beyond the data
+NO speculation
+NO predictions
+CALCULATION RULES
+
+Double-check ALL calculations
+Show your work
+Report any errors
+OUTPUT REQUIREMENTS
+
+Descriptive analysis only
+NO recommendations
+NO code
+NO suggestions
+REPORTING
+
+Be clear and concise
+Highlight data limitations
+Explain methodology
+COMPLIANCE IS MANDATORY`;
         //console.log(prmpt);
   result = await chat.sendMessage(prmpt);
   //console.log(result.response.text());
