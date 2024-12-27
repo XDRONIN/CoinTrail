@@ -6,7 +6,14 @@ $name=$_SESSION['name'];
 
 
 $janArray=array();
-
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $selected_year = $_POST['year'];
+    //echo "<p>Selected Year: $selected_year</p>";
+} else {
+    // Default year, if no year is selected yet
+    $selected_year = date('Y');
+   // echo "<p>Selected Year: $selected_year</p>";
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -68,6 +75,21 @@ $janArray=array();
                </div>
       </div>
 </div>
+<br>
+
+<form method="POST" id="yearForm">
+    <label for="year">Select Year:</label>
+    <select name="year" id="year" onchange="this.form.submit()">
+    <?php
+        // Generate options for the year dropdown (example: from 2000 to current year)
+        $current_year = date('Y');
+        for ($i = 2000; $i <= $current_year; $i++) {
+            $selected = ($i == $selected_year) ? 'selected' : '';
+            echo "<option value='$i' $selected>$i</option>";
+        }
+        ?>
+    </select>
+</form>
 <script>
 </script>
 <script
@@ -85,14 +107,14 @@ $othArray = array();
 for ($j=1; $j <= 12; $j++) {
     // All categories
     $query = "SELECT SUM(amount) AS total_amount FROM $tbname 
-              WHERE YEAR(DOT) = 2024 AND MONTH(DOT) = $j AND COD='debit'";
+              WHERE YEAR(DOT) =$selected_year  AND MONTH(DOT) = $j AND COD='debit'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($result);
     $allArray[$j] = $row['total_amount'] ?? 0;
     
     // Essentials
     $query = "SELECT SUM(amount) AS total_amount FROM $tbname 
-              WHERE YEAR(DOT) = 2024 AND MONTH(DOT) = $j AND COD='debit' 
+              WHERE YEAR(DOT) = $selected_year  AND MONTH(DOT) = $j AND COD='debit' 
               AND catogory='Essentials'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($result);
@@ -100,7 +122,7 @@ for ($j=1; $j <= 12; $j++) {
     
     // Bills
     $query = "SELECT SUM(amount) AS total_amount FROM $tbname 
-              WHERE YEAR(DOT) = 2024 AND MONTH(DOT) = $j AND COD='debit' 
+              WHERE YEAR(DOT) = $selected_year  AND MONTH(DOT) = $j AND COD='debit' 
               AND catogory='Bills'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($result);
@@ -108,7 +130,7 @@ for ($j=1; $j <= 12; $j++) {
     
     // Savings
     $query = "SELECT SUM(amount) AS total_amount FROM $tbname 
-              WHERE YEAR(DOT) = 2024 AND MONTH(DOT) = $j AND COD='debit' 
+              WHERE YEAR(DOT) = $selected_year AND MONTH(DOT) = $j AND COD='debit' 
               AND catogory='Savings'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($result);
@@ -116,7 +138,7 @@ for ($j=1; $j <= 12; $j++) {
     
     // Others
     $query = "SELECT SUM(amount) AS total_amount FROM $tbname 
-              WHERE YEAR(DOT) = 2024 AND MONTH(DOT) = $j AND COD='debit' 
+              WHERE YEAR(DOT) = $selected_year  AND MONTH(DOT) = $j AND COD='debit' 
               AND catogory='Others'";
     $result = mysqli_query($conn, $query);
     $row = mysqli_fetch_array($result);
