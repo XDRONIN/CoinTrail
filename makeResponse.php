@@ -194,8 +194,7 @@ NO suggestions
 REPORTING
 
 Be clear and concise
-Highlight data limitations
-Explain methodology
+
 COMPLIANCE IS MANDATORY`;
         //console.log(prmpt);
   result = await chat.sendMessage(prmpt);
