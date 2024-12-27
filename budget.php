@@ -64,17 +64,33 @@ $query=mysqli_query($conn,$sql);
             <input type="text" name="Btb-input" class="Btb-input" style="display: none;"><!-- stores the table name of the particular budget for deletion/edit  not visble in DOM-->
         <center><h2 class="bud-name"><script>document.write(budget)</script></h2></center><br>
     <?php 
+        $currentTotal=0;
         $cardSql="SELECT * FROM $bTb ";
         $cardQuery= mysqli_query($conn,$cardSql);
         $cardRow=mysqli_fetch_array($cardQuery);
         if($cardRow[0]==1){?>
-        <h3 class="total"><?php  echo"".$cardRow["1"]." :   $".$cardRow["2"]."<br>";?></h3>
-       <?php }
+        <h3 class="total"><?php  echo"MAX :   $".$cardRow["2"]."<br>";?></h3>
+       <?php
+       $max=$cardRow["2"];
+    }
        
         while($cardRow=mysqli_fetch_array($cardQuery)){
             echo"".$cardRow["1"]." :   $".$cardRow["2"]."<br>";
+            $currentTotal=$currentTotal+$cardRow["2"];
+
         
-}?>
+}
+echo "<h4 class='total'>Total : $".$currentTotal."</h4>";
+if($max-$currentTotal>0){
+    echo "<h5 class='total'>Under Budget,Remaining : $".$max-$currentTotal."</h5>";
+}
+elseif($max-$currentTotal<0){
+    echo "<h5 class='total'>Over Budget,Excess : $".$currentTotal-$max."<h5>";
+}
+else{
+    echo "<h5 class='total'>Budget is fully utilized</h5>";
+}
+?>
 <div class="buttons">
 <button class="dltButton" formaction="deletion.php"></button>
 <button class="editButt" formaction="edit.php"></button></div>
