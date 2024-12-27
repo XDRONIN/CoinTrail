@@ -8,6 +8,14 @@ $tranResult = mysqli_query($conn,$tranSql);
 
 
 
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $start_date = $_POST['start_date'];
+    $end_date = $_POST['end_date'];
+
+    // Use the dates in your query
+    //echo "Start Date: $start_date, End Date: $end_date";
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,7 +39,24 @@ $tranResult = mysqli_query($conn,$tranSql);
       <h2 class="logo">Coin<span class="span1">Trail</span></h2>
      
       <div class="profile"><?php echo $name?></div>
-    </div>  
+    </div> 
+    <form id="dateForm" action="view.php" method="POST">
+    <div class="con">
+    
+    <div class="all-options">
+        <label for="startDate">Start Date:</label>
+        <input type="date" id="startDate" name="start_date" />
+      </div>
+
+      <div class="all-options">
+        <label for="endDate">End Date:</label>
+        <input type="date" id="endDate" name="end_date"  />
+      </div>
+      
+    </div> 
+    <button class="add2" type="submit" name="submit">Set Date</button>
+    </form>
+
     <div class="all-options box">
       
                 <div class="option">
@@ -79,8 +104,211 @@ $tranResult = mysqli_query($conn,$tranSql);
   const bill=document.getElementById('bill');
   const sav=document.getElementById('sav');
   const oth=document.getElementById('oth');
+  let sDate=document.getElementById('startDate');
+  let eDate=document.getElementById('endDate');
+  
   function setView(){
-    
+    sDate.value="<?php echo $start_date;?>";
+  eDate.value="<?php echo $end_date;?>";
+    if(sDate.value != 0 && eDate.value != 0){
+      //console.log(sDate.value , eDate.value);
+      if(all.checked){
+      //console.log('all');
+      <?php $tranSql="SELECT * FROM $tbname WHERE DOT BETWEEN '$start_date' AND '$end_date' ORDER BY id DESC";?>
+      tranDiv.innerHTML=` <?php 
+         $tranResult = mysqli_query($conn,$tranSql);
+        $i==1;
+         while ( $tranRow = mysqli_fetch_array($tranResult)) {
+         
+          if($tranRow[1]=="debit" ){
+            
+          if($tranRow[3]=="Essentials"){
+            echo "<form method='POST'><div class='tranRow' style='background-color: #FA5555;' ><input type='text' name ='id' value='".$tranRow[0]."' style='display: none;'>".$tranRow[1]." &nbsp;".$tranRow[2]."$ &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]." &nbsp; ".$tranRow[5]."
+            <div class='buttons'>
+            <button class='dltButton' formaction='dltTransaction.php'></button>
+            <button class='editButt' formaction='editTransaction.php'></button></div></div></form>";
+          }
+          else if($tranRow[3]== "Bills"){
+            echo "<form method='POST'><div class='tranRow' style='background-color: #F7FB76;' ><input type='text' name ='id' value='".$tranRow[0]."' style='display: none;'>".$tranRow[1]." &nbsp;".$tranRow[2]."$ &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]." &nbsp; ".$tranRow[5]."
+            <div class='buttons'>
+            <button class='dltButton' formaction='dltTransaction.php'></button>
+            <button class='editButt' formaction='editTransaction.php'></button></div></form></div>";
+          }
+          else if($tranRow[3]== "Savings"){
+            echo "<form method='POST'><div class='tranRow' style='background-color: #8DED8E;' ><input type='text' name ='id' value='".$tranRow[0]."' style='display: none;'>".$tranRow[1]." &nbsp;".$tranRow[2]."$ &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]." &nbsp; ".$tranRow[5]."
+            <div class='buttons'>
+            <button class='dltButton' formaction='dltTransaction.php'></button>
+            <button class='editButt' formaction='editTransaction.php'></button></div></form></div>";
+          }
+          else if($tranRow[3]== "Others"){
+            echo "<form method='POST'><div class='tranRow' style='background-color: #2D7D8F;' ><input type='text' name ='id' value='".$tranRow[0]."' style='display: none;'>".$tranRow[1]."&nbsp;".$tranRow[2]."$ &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]." &nbsp; ".$tranRow[5]."
+            <div class='buttons'>
+            <button class='dltButton' formaction='dltTransaction.php'></button>
+            <button class='editButt' formaction='editTransaction.php'></button></div></form></div>";
+          }
+          
+
+        }
+          elseif($tranRow[1]=="credit" ){
+            echo "<form method='POST'><div class='tranRow' style='background-color: #24977b;' ><input type='text' name ='id' value='".$tranRow[0]."' style='display: none;'>".$tranRow[1]." &nbsp;".$tranRow[2]."$ &nbsp; ".$tranRow[5]." &nbsp; ".$tranRow[3]."
+            <div class='buttons'>
+            <button class='dltButton' formaction='dltTransaction.php'></button>
+            <button class='editButt' formaction='editTransaction.php'></button></div>
+           </form> </div>";}
+            $i++;
+           }
+        
+        
+        ?>`;
+    }
+    else if(ess.checked){
+      <?php $tranSql="SELECT * FROM $tbname WHERE DOT BETWEEN '$start_date' AND '$end_date' AND catogory='Essentials' ORDER BY id DESC";?>
+      tranDiv.innerHTML=` <?php 
+         $tranResult = mysqli_query($conn,$tranSql);
+        $i==1;
+         while ( $tranRow = mysqli_fetch_array($tranResult)) {
+         
+          if($tranRow[1]=="debit" ){
+            
+            if($tranRow[3]=="Essentials"){
+              echo "<form method='POST'><div class='tranRow' style='background-color: #FA5555;' ><input type='text' name ='id' value='".$tranRow[0]."' style='display: none;'>".$tranRow[1]." &nbsp;".$tranRow[2]."$ &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]." &nbsp; ".$tranRow[5]."
+              <div class='buttons'>
+              <button class='dltButton' formaction='dltTransaction.php'></button>
+              <button class='editButt' formaction='editTransaction.php'></button></div></div></form>";
+            }
+          else if($tranRow[3]== "Bills"){
+            echo "<div class='tranRow' style='background-color: #F7FB76;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div>";
+          }
+          else if($tranRow[3]== "Savings"){
+            echo "<div class='tranRow' style='background-color: #8DED8E;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div>";
+          }
+          else if($tranRow[3]== "Others"){
+            echo "<div class='tranRow' style='background-color: #2D7D8F;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div>";
+          }
+          
+
+        }
+          elseif($tranRow[1]=="credit" ){
+            echo "<div class='tranRow' style='background-color: #24977b;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]."</div>";}
+            $i++;
+           }
+        
+        
+        ?>`;
+
+    }
+    else if(bill.checked){
+      //console.log('bill');
+      <?php $tranSql="SELECT * FROM $tbname WHERE DOT BETWEEN '$start_date' AND '$end_date' AND  catogory='Bills' ORDER BY id DESC";?>
+      tranDiv.innerHTML=` <?php 
+         $tranResult = mysqli_query($conn,$tranSql);
+        $i==1;
+         while ( $tranRow = mysqli_fetch_array($tranResult)) {
+         
+          if($tranRow[1]=="debit" ){
+            
+          if($tranRow[3]=="Essentials"){
+            echo "<div class='tranRow' style='background-color: #FA5555;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div>";
+          }
+          else if($tranRow[3]== "Bills"){
+            echo "<form method='POST'><div class='tranRow' style='background-color: #F7FB76;' ><input type='text' name ='id' value='".$tranRow[0]."' style='display: none;'>".$tranRow[1]." &nbsp;".$tranRow[2]."$ &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]." &nbsp; ".$tranRow[5]."
+            <div class='buttons'>
+            <button class='dltButton' formaction='dltTransaction.php'></button>
+            <button class='editButt' formaction='editTransaction.php'></button></div></form></div>";
+          }
+          else if($tranRow[3]== "Savings"){
+            echo "<div class='tranRow' style='background-color: #8DED8E;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div>";
+          }
+          else if($tranRow[3]== "Others"){
+            echo "<div class='tranRow' style='background-color: #2D7D8F;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div>";
+          }
+          
+
+        }
+          elseif($tranRow[1]=="credit" ){
+            echo "<div class='tranRow' style='background-color: #24977b;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]."</div>";}
+            $i++;
+           }
+        
+        
+        ?>`;
+    }
+    else if(sav.checked){
+     // console.log('sav');
+      <?php $tranSql="SELECT * FROM $tbname WHERE DOT BETWEEN '$start_date' AND '$end_date' AND  catogory='Savings' ORDER BY id DESC";?>
+      tranDiv.innerHTML=` <?php 
+         $tranResult = mysqli_query($conn,$tranSql);
+        $i==1;
+         while ( $tranRow = mysqli_fetch_array($tranResult)) {
+         
+          if($tranRow[1]=="debit" ){
+            
+          if($tranRow[3]=="Essentials"){
+            echo "<div class='tranRow' style='background-color: #FA5555;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div>";
+          }
+          else if($tranRow[3]== "Bills"){
+            echo "<div class='tranRow' style='background-color: #F7FB76;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div>";
+          }
+          else if($tranRow[3]== "Savings"){
+            echo "<form method='POST'><div class='tranRow' style='background-color: #8DED8E;' ><input type='text' name ='id' value='".$tranRow[0]."' style='display: none;'>".$tranRow[1]." &nbsp;".$tranRow[2]."$ &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]." &nbsp; ".$tranRow[5]."
+            <div class='buttons'>
+            <button class='dltButton' formaction='dltTransaction.php'></button>
+            <button class='editButt' formaction='editTransaction.php'></button></div></form></div>";
+          }
+          else if($tranRow[3]== "Others"){
+            echo "<div class='tranRow' style='background-color: #2D7D8F;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div>";
+          }
+          
+
+        }
+          elseif($tranRow[1]=="credit" ){
+            echo "<div class='tranRow' style='background-color: #24977b;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]."</div>";}
+            $i++;
+           }
+        
+        
+        ?>`;
+    }
+    else if(oth.checked==true){
+      //console.log('oth');
+      <?php $tranSql="SELECT * FROM $tbname WHERE DOT BETWEEN '$start_date' AND '$end_date' AND  catogory='Others' ORDER BY id DESC";?>
+      tranDiv.innerHTML=` <?php 
+         $tranResult = mysqli_query($conn,$tranSql);
+        $i==1;
+         while ( $tranRow = mysqli_fetch_array($tranResult)) {
+         
+          if($tranRow[1]=="debit" ){
+            
+          if($tranRow[3]=="Essentials"){
+            echo "<div class='tranRow' style='background-color: #FA5555;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div>";
+          }
+          else if($tranRow[3]== "Bills"){
+            echo "<div class='tranRow' style='background-color: #F7FB76;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div>";
+          }
+          else if($tranRow[3]== "Savings"){
+            echo "<div class='tranRow' style='background-color: #8DED8E;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]."</div>";
+          }
+          else if($tranRow[3]== "Others"){
+            echo "<form method='POST'><div class='tranRow' style='background-color: #2D7D8F;' ><input type='text' name ='id' value='".$tranRow[0]."' style='display: none;'>".$tranRow[1]." &nbsp;".$tranRow[2]."$ &nbsp; ".$tranRow[3]." &nbsp; ".$tranRow[4]." &nbsp; ".$tranRow[5]."
+            <div class='buttons'>
+            <button class='dltButton' formaction='dltTransaction.php'></button>
+            <button class='editButt' formaction='editTransaction.php'></button></div></form></div>";
+          }
+          
+
+        }
+          elseif($tranRow[1]=="credit" ){
+            echo "<div class='tranRow' style='background-color: #24977b;' >".$tranRow[1]."$ &nbsp; ".$tranRow[2]." &nbsp; ".$tranRow[3]."</div>";}
+            $i++;
+           }
+        
+        
+        ?>`;
+    }
+
+      
+    }
+    else{
     if(all.checked){
       //console.log('all');
       <?php $tranSql="SELECT * FROM $tbname ORDER BY id DESC";?>
@@ -274,7 +502,7 @@ $tranResult = mysqli_query($conn,$tranSql);
         
         ?>`;
     }
-
+  }
   }
 setView();
 const inpts = document.querySelectorAll('.input');

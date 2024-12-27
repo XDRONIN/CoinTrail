@@ -255,11 +255,31 @@ a:hover {
   color: #000;
   cursor: pointer;
 }
+.add2 {
+  margin: 10px;
+  width: 120px;
+  height: 60px;
+
+  border-radius: 5px;
+  border: 2px solid #000000;
+
+  box-shadow: 4px 4px #000000;
+  font-size: 17px;
+  font-weight: 600;
+  color: #24977b;
+  cursor: pointer;
+}
+
 .but-container {
   display: flex;
   width: fit-content;
 
   position: relative;
   left: 93%;
-  top: -57px;
+  top: -210px;
+}
+.con {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
 }
