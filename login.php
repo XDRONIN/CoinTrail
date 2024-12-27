@@ -1,3 +1,11 @@
+<?php
+session_start();
+$error = '';
+if (isset($_SESSION['error'])) {
+    $error = $_SESSION['error'];
+    unset($_SESSION['error']); 
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,9 +38,12 @@
                <div class="flip-card__inner">
                   <div class="flip-card__front">
                      <div class="title">Log in</div>
+                     <?php if ($error): ?>
+        <p style="color: red; margin:0px;"><?php echo ($error); ?></p>
+    <?php endif; ?>
                      <form class="flip-card__form" action="loginCheck.php" method="POST">
-                        <input class="flip-card__input" name="email" placeholder="Email" type="email">
-                        <input class="flip-card__input" name="psswrd" placeholder="Password" type="password" id="password1">
+                        <input class="flip-card__input" name="email" placeholder="Email" type="email" required>
+                        <input class="flip-card__input" name="psswrd" placeholder="Password" type="password" id="password1" required>
                         <img src="eye-close.png" id="eye1" class="eye">
                         <button class="flip-card__btn" >Let`s go!</button>
                      </form>
@@ -79,4 +90,5 @@
       password1.type="password";
    }
 </script>
+
 </html>
