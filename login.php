@@ -51,9 +51,9 @@ if (isset($_SESSION['error'])) {
                   <div class="flip-card__back">
                      <div class="title">Sign up</div>
                      <form class="flip-card__form" action="signUp.php" method="POST">
-                        <input class="flip-card__input" placeholder="Name" type="name" name="name">
-                        <input class="flip-card__input"  placeholder="Email" type="email" name="email">
-                        <input class="flip-card__input"  placeholder="Password"  type="password" name="psswrd" id="password">
+                        <input class="flip-card__input" placeholder="Name" type="name" name="name" required>
+                        <input class="flip-card__input"  placeholder="Email" type="email" name="email" required>
+                        <input class="flip-card__input"  placeholder="Password"  type="password" name="psswrd" id="password" required>
                         <img src="eye-close.png" id="eye" class="eye">
                         <button class="flip-card__btn" style="margin-top: 0;">Confirm!</button>
                      </form>
