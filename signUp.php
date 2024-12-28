@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <head><title>Sign Up!</title></head><body>
     <link rel="stylesheet" href="signUp.css">
@@ -16,6 +19,13 @@ $email=$_POST["email"];
 $psswrd=$_POST["psswrd"];
 $hash_psswrd=password_hash($psswrd,PASSWORD_DEFAULT);
 $sql="INSERT into users (name,email,psswrd) values ('$name','$email','$hash_psswrd')";
+$checkEmail="SELECT * FROM users WHERE email='$email'";
+$result=mysqli_query($conn,$checkEmail);
+if(mysqli_num_rows($result)>0){
+    $_SESSION['error'] = 'Email Already in use,Try Login instead?'; // Store error in session
+    header("Location: http://localhost/MiniProject/login.php");
+    exit();
+}
 
 $qry=mysqli_query($conn, $sql);
 
