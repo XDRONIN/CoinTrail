@@ -130,3 +130,17 @@ a:hover {
   color: #000;
   cursor: pointer;
 }
+.butt3 {
+  margin: 10px;
+
+  height: 60px;
+
+  border-radius: 5px;
+  border: 2px solid #000000;
+  background-color: #24977b;
+  box-shadow: 4px 4px #000000;
+  font-size: 17px;
+  font-weight: 600;
+  color: #c40000;
+  cursor: pointer;
+}

@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $reqId = $_POST['reqId'];
     
-    // Process the data as needed
+    
     //echo "Message: " . htmlspecialchars($message) . "<br>";
     //echo "Request ID: " . htmlspecialchars($reqId);
     $sql = "INSERT INTO Response_table (req_id, response) VALUES ('$reqId', '$message')";

@@ -159,6 +159,20 @@ foreach ($users as $tbname) {
                 form.submit(); // Submit the form
             };
             form.appendChild(button2);
+            var button3 = document.createElement('button');
+button3.type = 'button'; // Set to button type
+button3.innerText = 'Delete User';
+button3.classList.add('butt3');
+button3.onclick = function() {
+    // Show a confirmation popup
+    var userConfirmed = confirm("Are you sure you want to delete this user?");
+    if (userConfirmed) {
+        form.action = 'dltUser.php'; // Set the action for this button
+        form.submit(); // Submit the form only if the user clicks "Yes"
+    }
+};
+
+            form.appendChild(button3);
 
             // Append the form to the userDiv
             userDiv.appendChild(form);
