@@ -57,7 +57,13 @@ $name=$_SESSION['name'];?>
     <form method="post" action="updateTransaction.php" >
     <input type="text" value="<?php echo $id?>" style="display: none;" name="id"><!-- Sends the id of the transaction to updateTransaction.php-->
     <b>Amount:</b><input type="number" name='amount' value='<?php echo $result[2]?>' class="input"><br>
-    <b>Catogory:</b><input type="text" name='catogory' value='<?php echo $result[3]?>' class="input"><br>
+    <b>Catogory:</b><select name='catogory'  class="input" >
+    <option value="Essentials" id="ess">Essentials</option>
+    <option value="Bills" id="bill">Bills</option>
+    <option value="Savings" id="sav">Savings</option>
+    <option value="Others" id="oth">Others</option>
+      
+    </select><br>
     <b>Sub-Catogory:</b><input type="text" name='scatogory' value='<?php echo $result[4]?>' class="input"><br>
     
    <b> Date:</b> &nbsp;&nbsp;&nbsp;  <input type="date" name='date' value='<?php echo $result[5]?>' class="input"><br>
@@ -68,4 +74,24 @@ $name=$_SESSION['name'];?>
     <?php } ?>
     </div>
 </body>
+<script>
+  let selected='<?php echo $result[3]?>';
+  let ess=document.getElementById('ess');
+  let bill=document.getElementById('bill');
+  let sav=document.getElementById('sav');
+  let oth=document.getElementById('oth');
+  if(selected=="Essentials"){
+    ess.selected=true;
+  }
+  else if(selected=="Bills"){
+    bill.selected=true;
+    }
+    else if(selected=="Savings"){
+      sav.selected=true;
+      }
+      else if(selected=="Others"){
+        oth.selected=true;
+        }
+
+</script>
 </html>
